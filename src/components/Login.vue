@@ -61,7 +61,7 @@ export default {
   display: border-box;
   height: 350px;
   width: 520px;
-  border: 2px solid;
+  border: 0px solid;
   box-shadow: 220px;
   justify-content: center;
   margin-left: 500px;

@@ -15,19 +15,6 @@
         </div> 
     </div>
 </template>
-<!--<script>
-// @ is an alias to /src
-//import HelloWorld from "@/components/HelloWorld.vue";
-import Between from "@/components/Between.vue";
-export default {
-  name: "Board",
-  components: {
-    Between,
-    
-    
-  }
-};
-</script>-->
 
 <style>
 .mytext{

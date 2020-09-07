@@ -4,10 +4,6 @@
     List 1
     
 </div>&nbsp;
-<div class="list2">
-    List 2
-    
-</div>
 
 </div>
 </template>

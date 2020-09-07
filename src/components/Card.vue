@@ -7,7 +7,7 @@
      <b-card class="cardm"  @click="onClick()">
       card555
     </b-card>-->
-    <b-card class="cardm" @click="modal=true">
+    <b-card class="cardm" v-show="card111" @click="modal=true, card111=false">
       card111
     </b-card>
     <div v-show="modal" class="xya">
@@ -31,7 +31,8 @@
 export default {
   data:function(){
     return{
-    modal:false
+    modal:false,
+    card111:true
     }
   },
   
