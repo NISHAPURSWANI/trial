@@ -43,7 +43,6 @@
   </div>
 </template>
 <script>
-//import Vue from "vue";
 
 export default {
   name: "HelloWorld",
@@ -66,9 +65,6 @@ export default {
   justify-content: center;
   margin-left: 500px;
   align-self: center;
-  /*background-image: url("https://i.imgur.com/7AqxKzf.jpg");
-  background-size: cover;
-  background-attachment: fixed;*/
 
 }
 .login {

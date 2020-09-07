@@ -70,11 +70,8 @@
   color:white;
  background: rgba(255, 255, 255, 0.24);
    border:0px;
-  /*margin-left: 0.4rem;*/
   border-radius: 0.4rem;
   display:block;
-  /*padding: 1em, 1em, 1em, 1em;*/
-  /*justify-self: end;*/
   margin-left:1300px;
   margin-top: -25px;
 
@@ -85,11 +82,8 @@
   color:white;
  background: rgba(255, 255, 255, 0.24);
    border:0px;
-  /*margin-left: 0.4rem;*/
   border-radius: 0.4rem;
   display:block;
-  /*padding: 1em, 1em, 1em, 1em;*/
-  /*justify-self: end;*/
   margin-left:1390px;
   margin-top: -25px;
 

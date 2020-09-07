@@ -48,6 +48,8 @@ background-image: url("https://i.imgur.com/7AqxKzf.jpg");
   background-color: rgba(245, 241, 241, 0.904);
   border-radius: 4px;
   align-self: center ;
+  overflow-x: auto;
+  overflow-y: auto;
   text-align:center;
   /*justify-content: center;*/
  /* align-content: center;*/
