@@ -9,14 +9,13 @@
       <list></list>
       <card></card>
       </div>
+
       
       
  </div>
 </template>
 
 <script>
-// @ is an alias to /src
-//import HelloWorld from "@/components/HelloWorld.vue";
 import Boards from "@/components/Boards.vue";
 import Between from "@/components/Between.vue";
 import List from "@/components/List.vue";
@@ -43,18 +42,18 @@ background-image: url("https://i.imgur.com/7AqxKzf.jpg");
   background-attachment: fixed;
 }
 .mylist{
-  height:500px;
-  width:300px;
+  min-height:500px;
+  max-width:300px;
   background-color: rgba(245, 241, 241, 0.904);
   border-radius: 4px;
   align-self: center ;
-  overflow-x: auto;
-  overflow-y: auto;
+  /*overflow-x: auto;*/
+ /*overflow-y: auto;*/
   text-align:center;
   /*justify-content: center;*/
  /* align-content: center;*/
- 
  margin-left: 50px;
+ margin-bottom:px;
 }
 
 </style>

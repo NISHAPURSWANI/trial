@@ -3,8 +3,6 @@
   <div id="app">
     <div id="nav">
 
-      <!--<router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>-->
     </div>
     <router-view />
   </div>
@@ -17,8 +15,6 @@
   text-align: center;
   color: #2c3e50;
   background-image: url("https://i.imgur.com/7AqxKzf.jpg");
- // background-size: cover;
-  /*background-attachment: fixed;*/
   min-height:720px;
   min-width:1520px;
 }

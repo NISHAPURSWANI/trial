@@ -7,22 +7,6 @@
 
 </div>
 </template>
-<!--<script>
-// @ is an alias to /src
-//import List from "@/components/List.vue";
-import Card from "@/components/Card.vue";
-
-//import Login from "@/components/Login.vue";
-
-export default {
-  name: "Boards",
-  components: {
-    //List,
-    Card
-    // Login
-  }
-};
-</script>-->
 
 <style>
 .left {

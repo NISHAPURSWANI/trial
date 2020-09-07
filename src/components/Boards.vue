@@ -84,9 +84,9 @@
 .circular{
   
 
+
     border-radius: 50%;
     border:0px;
-    margin-left:0.4rem;
     height:25.2px;
   width:25.2px;
   margin-top:10px;
