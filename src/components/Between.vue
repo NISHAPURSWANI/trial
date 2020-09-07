@@ -22,7 +22,7 @@
      <button class="mybtnbutler">
       <i class="fas fa-concierge-bell" style="font-size:18px;color:white;"></i>&nbsp; Butler
     </button>
-    <button class="mybtnbutler">
+    <button class="mybtnmenu">
       <i class="fas fa-ellipsis-h menu-btn-icon" style="font-size:18px;color:white;"></i>&nbsp;Show Menu
     </button>
   </div>
@@ -36,7 +36,16 @@
 }
 .pvtbtn {
   color: white;
-  margin-right: 10px;
+  margin-right: 30px;
+ background: rgba(255, 255, 255, 0.24);
+ border:0px;
+ border-radius:4px;
+}
+.starbtn{
+   background: rgba(255, 255, 255, 0.24);
+   border:0px;
+   border-radius: 4px;
+
 }
 
 .circle {
@@ -45,12 +54,17 @@
   /*margin-left:0.4rem;*/
   height: 25.2px;
   width: 25.2px;
-  /*margin-top: -50px;*/
+  margin-top: -35px;
+  border:0px;
 }
 .invite {
   margin-left: 40px;
   color: white;
   border-radius: 4px;
+  margin-right: 40px;
+   background: rgba(255, 255, 255, 0.24);
+   border:0px;
+
 }
 .mybtnbutler{
   color:white;
@@ -60,9 +74,28 @@
   border-radius: 0.4rem;
   display:block;
   /*padding: 1em, 1em, 1em, 1em;*/
+  /*justify-self: end;*/
+  margin-left:1300px;
+  margin-top: -25px;
 
  
   
+}
+.mybtnmenu{
+  color:white;
+ background: rgba(255, 255, 255, 0.24);
+   border:0px;
+  /*margin-left: 0.4rem;*/
+  border-radius: 0.4rem;
+  display:block;
+  /*padding: 1em, 1em, 1em, 1em;*/
+  /*justify-self: end;*/
+  margin-left:1390px;
+  margin-top: -25px;
+
+ 
+  
+
 }
 
 </style>

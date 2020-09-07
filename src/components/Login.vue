@@ -81,8 +81,8 @@ export default {
     
 }
 .image{
-    width: 150px;
-    height: 50px;
+    width: 550px;
+    height: 550px;
     position: center;
 }
 </style>
