@@ -7,7 +7,14 @@
     <br />
     <div class="mylist">
       <list></list>
+      <div >
       <card></card>
+       </div>
+
+      <!--<div v-show="bmodal">
+        hello
+        <modal></modal>
+      </div>-->
     </div>
   </div>
 </template>
@@ -17,14 +24,25 @@ import Boards from "@/components/Boards.vue";
 import Between from "@/components/Between.vue";
 import List from "@/components/List.vue";
 import Card from "@/components/Card.vue";
+//import Modal from "@/components/Modal.vue";
+
 export default {
   name: "Board",
   components: {
     Boards,
     Between,
     List,
-    Card
-  }
+    Card,
+   // Modal,
+    //bmodal:false
+    
+
+  },
+  /*methods:{
+    display(){
+      this.bmodal==true;
+    }
+  }*/
 };
 </script>
 1<style >

@@ -1,23 +1,23 @@
 <template>
   <div class="formsec">
-    <img alt="Vue logo" src="../assets/trello.png" class="image" />
+    <img alt="Vue logo" src="../assets/trello.png" class="image" style="width:200px;height:50px;" />
     <br />
     <br />
     <br />
     <br />
 
     <div class="form">
+      <b-card>
       <form>
         <br />
         <br />
         <label for="email">
           <input
             type="text"
-            v-model="email"
+            v-model="username"
             placeholder="Enter your username"
             style="height:50px; width:350px"
           />
-          {{ username }}
         </label>
         <br />
         <br />
@@ -45,26 +45,55 @@
         <br />
         <router-link to="/board">
           <label for="login">
-            <button class="login">Login</button>
+            <button class="login" @click='verify()'>Login</button>
           </label>
           <br />
         </router-link>
       </form>
+      </b-card>
     </div>
   </div>
 </template>
 <script>
+import Vue from "vue";
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+ Vue.use(VueAxios, axios)
+
 export default {
   name: "HelloWorld",
+ /* mounted()
+    {
+      Vue.axios.post("https://trello-clone-123.herokuapp.com/rest-auth/login/")
+      .then((username,email,password)=>{
+        console.log(username,email,password)
+
+      })
+
+    },*/
+    
   data: function() {
     return {
       email: "",
       username: "",
       password: ""
     };
+    
+  },
+  methods:{
+    verify(){
+      axios.post('https://trello-clone-123.herokuapp.com/rest-auth/login/')
+      .then((response)=>{
+        console.log(response)
+      })
+    }
+
   }
-};
-</script>
+}
+  </script>
+
+  
+
 <style>
 .form {
   display: border-box;
