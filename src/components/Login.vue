@@ -1,49 +1,59 @@
 <template>
   <div class="formsec">
-    <img
-      alt="Vue logo"
-      src="../assets/trello.png"
-      class="image"
-    />
-    <br /><br /><br /><br />
+    <img alt="Vue logo" src="../assets/trello.png" class="image" />
+    <br />
+    <br />
+    <br />
+    <br />
 
     <div class="form">
       <form>
-        <br /><br />
-        <label for="email"
-          ><input
+        <br />
+        <br />
+        <label for="email">
+          <input
             type="text"
             v-model="email"
             placeholder="Enter your username"
             style="height:50px; width:350px"
-          />{{ username }}</label
-        ><br /><br />
-        <label for="email"
-          ><input
+          />
+          {{ username }}
+        </label>
+        <br />
+        <br />
+        <label for="email">
+          <input
             type="email"
             v-model="email"
             placeholder="Enter your email"
             style="height:50px; width:350px"
-          />{{ email }}</label
-        ><br /><br />
-        <label for="password"
-          ><input
+          />
+          {{ email }}
+        </label>
+        <br />
+        <br />
+        <label for="password">
+          <input
             type="password"
             v-model="password"
             placeholder="Enter your password"
             style="height:50px; width:350px"
-          />{{ password }}</label
-        ><br /><br />
-        <router-link to="/board"
-          ><label for="login"><button class="login">Login</button></label><br
-        /></router-link>
-        
+          />
+          {{ password }}
+        </label>
+        <br />
+        <br />
+        <router-link to="/board">
+          <label for="login">
+            <button class="login">Login</button>
+          </label>
+          <br />
+        </router-link>
       </form>
     </div>
   </div>
 </template>
 <script>
-
 export default {
   name: "HelloWorld",
   data: function() {
@@ -53,7 +63,7 @@ export default {
       password: ""
     };
   }
-}
+};
 </script>
 <style>
 .form {
@@ -65,20 +75,18 @@ export default {
   justify-content: center;
   margin-left: 500px;
   align-self: center;
-
 }
 .login {
   background-color: green;
   color: honeydew;
   align-content: center;
 }
-.formsec{
-    justify-content: center;
-    
+.formsec {
+  justify-content: center;
 }
-.image{
-    width: 550px;
-    height: 550px;
-    position: center;
+.image {
+  width: 550px;
+  height: 550px;
+  position: center;
 }
 </style>

@@ -9,7 +9,7 @@
     <span>
       <b>Personal</b>
     </span>
- &nbsp; |
+    &nbsp; |
     <button class="pvtbtn">
       <i class="fa fa-lock" style="color:white;"></i> &nbsp;Private
     </button>
@@ -18,8 +18,8 @@
     <button class="circle"></button>
     <button class="circle"></button>
     <button class="circle"></button>
-    <button class="invite">Invite</button> 
-     <button class="mybtnbutler">
+    <button class="invite">Invite</button>
+    <button class="mybtnbutler">
       <i class="fas fa-concierge-bell" style="font-size:18px;color:white;"></i>&nbsp; Butler
     </button>
     <button class="mybtnmenu">
@@ -37,15 +37,14 @@
 .pvtbtn {
   color: white;
   margin-right: 30px;
- background: rgba(255, 255, 255, 0.24);
- border:0px;
- border-radius:4px;
+  background: rgba(255, 255, 255, 0.24);
+  border: 0px;
+  border-radius: 4px;
 }
-.starbtn{
-   background: rgba(255, 255, 255, 0.24);
-   border:0px;
-   border-radius: 4px;
-
+.starbtn {
+  background: rgba(255, 255, 255, 0.24);
+  border: 0px;
+  border-radius: 4px;
 }
 
 .circle {
@@ -55,41 +54,32 @@
   height: 25.2px;
   width: 25.2px;
   margin-top: -35px;
-  border:0px;
+  border: 0px;
 }
 .invite {
   margin-left: 40px;
   color: white;
   border-radius: 4px;
   margin-right: 40px;
-   background: rgba(255, 255, 255, 0.24);
-   border:0px;
-
+  background: rgba(255, 255, 255, 0.24);
+  border: 0px;
 }
-.mybtnbutler{
-  color:white;
- background: rgba(255, 255, 255, 0.24);
-   border:0px;
+.mybtnbutler {
+  color: white;
+  background: rgba(255, 255, 255, 0.24);
+  border: 0px;
   border-radius: 0.4rem;
-  display:block;
-  margin-left:1300px;
+  display: block;
+  margin-left: 1300px;
   margin-top: -25px;
-
- 
-  
 }
-.mybtnmenu{
-  color:white;
- background: rgba(255, 255, 255, 0.24);
-   border:0px;
+.mybtnmenu {
+  color: white;
+  background: rgba(255, 255, 255, 0.24);
+  border: 0px;
   border-radius: 0.4rem;
-  display:block;
-  margin-left:1390px;
+  display: block;
+  margin-left: 1390px;
   margin-top: -25px;
-
- 
-  
-
 }
-
 </style>
