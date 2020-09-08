@@ -9,26 +9,16 @@
     <div class="form">
       <b-card>
       <form>
+        <b>Login to Trello</b>
         <br />
         <br />
-        <label for="email">
+        <label for="username">
           <input
             type="text"
             v-model="username"
             placeholder="Enter your username"
             style="height:50px; width:350px"
           />
-        </label>
-        <br />
-        <br />
-        <label for="email">
-          <input
-            type="email"
-            v-model="email"
-            placeholder="Enter your email"
-            style="height:50px; width:350px"
-          />
-          {{ email }}
         </label>
         <br />
         <br />
@@ -39,7 +29,6 @@
             placeholder="Enter your password"
             style="height:50px; width:350px"
           />
-          {{ password }}
         </label>
         <br />
         <br />
@@ -62,15 +51,7 @@ import VueAxios from 'vue-axios'
 
 export default {
   name: "HelloWorld",
- /* mounted()
-    {
-      Vue.axios.post("https://trello-clone-123.herokuapp.com/rest-auth/login/")
-      .then((username,email,password)=>{
-        console.log(username,email,password)
-
-      })
-
-    },*/
+     
     
   data: function() {
     return {
@@ -81,12 +62,19 @@ export default {
     
   },
   methods:{
+
     verify(){
-      axios.post('https://trello-clone-123.herokuapp.com/rest-auth/login/')
+      axios.post('https://trello-clone-123.herokuapp.com/rest-auth/login/',{
+        username:this.username,
+        password:this.password
+        
+      })
       .then((response)=>{
-        console.log(response)
+        console.log(response);  
+
       })
     }
+    
 
   }
 }
@@ -112,6 +100,10 @@ export default {
 }
 .formsec {
   justify-content: center;
+  background-color: white;
+  height:auto;
+  width:auto;
+
 }
 .image {
   width: 550px;

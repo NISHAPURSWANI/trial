@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <div class="mytext">
       <button class="mybtn">
         <i class="fa fa-th"></i>
@@ -100,4 +100,5 @@
   width: 25.2px;
   margin-top: 10px;
 }
+
 </style>

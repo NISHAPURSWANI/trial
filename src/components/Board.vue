@@ -1,5 +1,6 @@
 <template>
-  <div>
+<div>
+  <div class="boards" style="height:715px;">
     <div class="board">
       <boards></boards>
       <between></between>
@@ -9,12 +10,21 @@
       <list></list>
       <div  @click="box=true" >
       <card></card>
+         
+
       
       </div>
+       <div>
+    <button class="btncard"><b>+</b>Add another card...</button>
+    </div>
       <div v-show="box" class="bmodal">
       <modal></modal>
       </div>
     </div>
+    <div class="add">
+    <button class="listbtn"><b>+</b> Add another list...</button>
+    </div>
+  </div>
     </div>
 </template>
 
@@ -46,11 +56,11 @@ export default {
 1<style >
 .boards {
   background-image: url("https://i.imgur.com/7AqxKzf.jpg");
-  background-size: cover;
-  background-attachment: fixed;
+ /* background-size: cover;
+  background-attachment: fixed;*/
 }
 .mylist {
-  min-height: 500px;
+  min-height: 400px;
   max-width: 300px;
   background-color: rgba(245, 241, 241, 0.904);
   border-radius: 4px;
@@ -68,6 +78,22 @@ export default {
   margin-bottom: 5px;
   margin-left: 350px;
   margin-top: -250px;
+
+}
+.btncard{
+  color:black;
+  background-color:rgba(255, 255, 255, 0.24); ;
+  border:0px;
+  width:200px;
+}
+.listbtn{
+  color:white;
+  background-color:rgba(255, 255, 255, 0.24); ;
+  border:0px;
+  margin-left:1280px;  
+}
+.add{
+  margin-top:-400px;
 
 }
 </style>

@@ -14,7 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-image: url("https://i.imgur.com/7AqxKzf.jpg");
   min-height:720px;
   min-width:1520px;
 }
