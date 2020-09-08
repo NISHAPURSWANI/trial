@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-show="modal">
         <div class="title">
         <br />
         <b>
@@ -34,11 +34,15 @@
         <b-button style="margin-left:500px;" @click="modal=false">Close</b-button>
       </div>
       <br />
-    <b-card class="cardm">card55</b-card>
-    <b-card class="cardm">card789</b-card>
-    <b-card class="cardm">card789</b-card>
-    <br />
-    <br />
-
+    
     </div>
 </template>
+<script>
+export default {
+  data:function(){
+    return{
+      modal:true
+    }
+  }
+}
+</script>

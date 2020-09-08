@@ -4,7 +4,7 @@
       <b-card class="cardm" v-show="card111" @click="modal=true">card111</b-card>
     </div>
 
-   <div v-show="modal" class="modal_box">
+  <!-- <div v-show="modal" class="modal_box">
       <div class="title">
         <br />
         <b>
@@ -39,7 +39,7 @@
         <b-button style="margin-left:500px;" @click="modal=false">Close</b-button>
       </div>
       <br />
-    </div>
+    </div>-->
     <b-card class="cardm">card55</b-card>
     <b-card class="cardm">card789</b-card>
     <b-card class="cardm">card789</b-card>

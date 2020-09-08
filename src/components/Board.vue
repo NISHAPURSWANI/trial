@@ -7,16 +7,15 @@
     <br />
     <div class="mylist">
       <list></list>
-      <div >
+      <div  @click="box=true" >
       <card></card>
-       </div>
-
-      <!--<div v-show="bmodal">
-        hello
-        <modal></modal>
-      </div>-->
+      
+      </div>
+      <div v-show="box" class="bmodal">
+      <modal></modal>
+      </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -24,7 +23,7 @@ import Boards from "@/components/Boards.vue";
 import Between from "@/components/Between.vue";
 import List from "@/components/List.vue";
 import Card from "@/components/Card.vue";
-//import Modal from "@/components/Modal.vue";
+import Modal from "@/components/Modal.vue";
 
 export default {
   name: "Board",
@@ -33,16 +32,15 @@ export default {
     Between,
     List,
     Card,
-   // Modal,
-    //bmodal:false
+   Modal
     
 
   },
-  /*methods:{
-    display(){
-      this.bmodal==true;
+  data:function(){
+    return{
+      box:false
     }
-  }*/
+  }
 };
 </script>
 1<style >
@@ -59,6 +57,17 @@ export default {
   align-self: center;
   text-align: center;
   margin-left: 50px;
-  margin-bottom: px;
+  margin-bottom: 6px;
+}
+.bmodal{
+  
+  width: 600px;
+  height: auto;
+  background-color: lightgray;
+  text-align: left;
+  margin-bottom: 5px;
+  margin-left: 350px;
+  margin-top: -250px;
+
 }
 </style>
