@@ -38,12 +38,13 @@
           />
           <div v-if="!$v.password.required" class="invalid-feedback">The password field is required.</div>
           <br />
-          <div v-show="spin">
-            <b-spinner variant="primary" label="Spinning"></b-spinner>
-          </div>
 
           <label for="login">
-            <button class="login" @click="spin=true">Login</button>
+            <button class="login" @click="spin=true">
+              <div v-show="spin">
+                <b-spinner  small variant="primary" label="Spinning"></b-spinner>
+              </div>Login
+            </button>
           </label>
           <br />
         </form>
@@ -59,6 +60,7 @@ import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import { required } from "vuelidate/lib/validators";
+//import { STATUS_CODES } from 'http';
 
 Vue.use(VueAxios, axios);
 
@@ -84,27 +86,41 @@ export default {
     submit: function() {
       this.$v.$touch();
       if (this.$v.$pendding || this.$v.$error) {
-                    this.spin = false;
-                    return;
-      }
-      else {
-        axios.post("https://trello-clone-123.herokuapp.com/rest-auth/login/", {
+        this.spin = false;
+        return;
+      } else {
+        axios
+          .post("https://trello-clone-123.herokuapp.com/rest-auth/login/", {
             username: this.username,
             password: this.password
           })
-          .then(response => {
+         /* ;
+          
+           else if(response.status===400) {
+              this.spin=false;
+              alert('invalid creditenials ')
+            }
+                    
+      }*/
+            .then(response => {
             if (response.status === 200) {
               this.spin = false;
               console.log(response);
               this.$router.push({ name: "Board" });
-            } else if(response.statuscode===400) {
-              alert("invalid creditenials");
-              this.spin = false;
-              alert("invalid ");
             }
-          });
-      }
+          })
+      .catch(error => {
+        this.spin=false;
+        console.log(error);
+        alert("Invalid username or");
+        this.$router.push({ name: "Login" });
+
+
+      })
+
     }
+    }
+  
   }
 };
 </script>
@@ -123,7 +139,7 @@ export default {
   align-self: center;
 }
 .login {
-  background-color: green;
+  background-color :rgba(21, 252, 0, 0.781);
   color: honeydew;
   align-content: center;
 }
