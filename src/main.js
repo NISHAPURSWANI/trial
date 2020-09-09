@@ -23,5 +23,6 @@ Vue.use(Vuelidate);
 new Vue({
   router,
   store,
+  axios,
   render: h => h(App)
 }).$mount("#app");

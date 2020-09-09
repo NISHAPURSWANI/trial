@@ -29,15 +29,37 @@
       <button class="mybtnrhs">
         <i class="fa fa-bell"></i>
       </button>
-      <button class="circular"></button>
+      <button class="circular" @click="logout()" ></button>
+     <!-- <div v-show="log"><b-modal><button @click="logout()">Logout</button></b-modal></div>-->
+      <div>
+  <!--<b-button v-b-modal.modal-1 class="circular"></b-button>
+
+  <b-modal id="modal-1" title="User2">
+    <button  @click="logout()" >Logout</button>
+  </b-modal>-->
+</div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  data:function(){
+    return{
+      //log:false
 
+    }
+  },
+  methods:{
+  logout:function(){
+  this.$router.push({ name: "Login" });
+  }
+
+  }
+}
+</script>
 <style>
 .mytext {
   text-align: start;
-  margin-top: -55px;
   background-color: rgba(0, 0, 0, 0.2);
 }
 .mybtn {
@@ -98,7 +120,7 @@
   border: 0px;
   height: 25.2px;
   width: 25.2px;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 </style>

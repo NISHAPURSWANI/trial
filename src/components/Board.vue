@@ -1,6 +1,6 @@
-<template>
-<div>
-  <div class="boards" style="height:715px;">
+<template >
+<div class="xyz" >
+  <div >
     <div class="board">
       <boards></boards>
       <between></between>
@@ -54,11 +54,15 @@ export default {
 };
 </script>
 1<style >
-.boards {
-  background-image: url("https://i.imgur.com/7AqxKzf.jpg");
- /* background-size: cover;
-  background-attachment: fixed;*/
+.xyz{
+    background: url("https://i.imgur.com/7AqxKzf.jpg");
+    height: 100%;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
+
 .mylist {
   min-height: 400px;
   max-width: 300px;

@@ -40,10 +40,7 @@
           <br />
 
           <label for="login">
-            <button class="login" @click="spin=true">
-              <div v-show="spin">
-                <b-spinner  small variant="primary" label="Spinning"></b-spinner>
-              </div>Login
+            <button class="login" @click="spin=true">Login <b-spinner  small variant="primary" label="Spinning" v-show="spin"></b-spinner>
             </button>
           </label>
           <br />
@@ -59,10 +56,10 @@
 import Vue from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
-import { required } from "vuelidate/lib/validators";
 //import { STATUS_CODES } from 'http';
 
 Vue.use(VueAxios, axios);
+import { required } from "vuelidate/lib/validators";
 
 export default {
   name: "Login",
@@ -92,29 +89,25 @@ export default {
         axios
           .post("https://trello-clone-123.herokuapp.com/rest-auth/login/", {
             username: this.username,
-            password: this.password
+            password: this.password,
+            
           })
-         /* ;
-          
-           else if(response.status===400) {
-              this.spin=false;
-              alert('invalid creditenials ')
-            }
-                    
-      }*/
+        
             .then(response => {
             if (response.status === 200) {
               this.spin = false;
               console.log(response);
               this.$router.push({ name: "Board" });
-            }
-          })
-      .catch(error => {
-        this.spin=false;
-        console.log(error);
-        alert("Invalid username or");
-        this.$router.push({ name: "Login" });
 
+            }
+            
+          })
+
+      .catch(error => {
+        this.spin=false
+        console.log(error);
+        alert("Invalid username or password");
+        this.$router.push({ name: "Login" });
 
       })
 
@@ -134,9 +127,6 @@ export default {
   width: 520px;
   border: 0px solid;
   box-shadow: 220px;
-  justify-content: center;
-  margin-left: 500px;
-  align-self: center;
 }
 .login {
   background-color :rgba(21, 252, 0, 0.781);
