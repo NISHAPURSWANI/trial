@@ -53,13 +53,8 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import axios from "axios";
-import VueAxios from "vue-axios";
-//import { STATUS_CODES } from 'http';
-
-Vue.use(VueAxios, axios);
 import { required } from "vuelidate/lib/validators";
+import instance from '../plugins/axios_i';
 
 export default {
   name: "Login",
@@ -86,36 +81,41 @@ export default {
         this.spin = false;
         return;
       } else {
-        axios
-          .post("https://trello-clone-123.herokuapp.com/rest-auth/login/", {
-            username: this.username,
-            password: this.password,
-            
-          })
+        instance.post('/rest-auth/login'),{
+           username: this.username,
+             password: this.password,
+        }
         
-            .then(response => {
-            if (response.status === 200) {
-              this.spin = false;
-              console.log(response);
-              this.$router.push({ name: "Board" });
 
-            }
-            
-          })
+          .then(resp => {
+         if (resp.status === 200) {
+        this.spin = false;
+        this.$router.push({ name: "Board" });
 
+        
+
+        }
+      })
       .catch(error => {
         this.spin=false
         console.log(error);
         alert("Invalid username or password");
-        this.$router.push({ name: "Login" });
+        this.$router.push({ name: "Login" });/**/
+      }) 
 
-      })
+      
 
-    }
-    }
+        }
+        
+
+         
+
+      
   
-  }
-};
+      }
+    }
+  };
+    
 </script>
 
   
