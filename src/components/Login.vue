@@ -1,64 +1,57 @@
 <template>
-  <div class="formsec">
-    <img alt="Vue logo" src="../assets/trello.png" class="image" style="width:200px;height:50px;" />
-    <br />
-    <br />
-    <br />
-    <br />
+  <div class="loginpage">
+    <img alt="Vue logo" src="../assets/trello.png" class="image" style="width:200px;height:50px;  " />
 
-    <div class="form" id="loginform">
-      <b-card>
-        <form v-on:submit.prevent="submit">
-          <b>Login to Trello</b>
-          <br />
-          <br />
+    <div class="loginform" id="loginform">
+      <form v-on:submit.prevent="submit">
+        <b-card title="Login to trello " class="card">
           <input
             type="text"
+            class="myinput"
+            placeholder="Enter your username"
             v-model.trim="$v.username.$model"
             :class="{'is-invalid': validationStatus($v.username)}"
-            class="form-control form-control-lg"
-            placeholder="Enter your username"
-            style="height:50px; width:350px; margin-left:70px;"
+            @keypress.enter="validationStatus()"
           />
           <div
             v-if="!$v.username.required"
             class="invalid-feedback"
           >The user name field is required.</div>
 
-          <br />
-          <br />
           <input
             type="password"
+            class="myinput"
             v-model.trim="$v.password.$model"
             :class="{'is-invalid': validationStatus($v.password)}"
-            class="form-control form-control-lg"
             placeholder="Enter your password"
-            style="height:50px; width:350px;margin-left:70px;"
             @keypress.enter="validationStatus()"
           />
+          {{password}}
           <div v-if="!$v.password.required" class="invalid-feedback">The password field is required.</div>
+
           <br />
 
+          <!--<button class="loginbtn" @onclick="spin=true">
+            Login
+            <b-spinner small v-show="spin"></b-spinner>
+          </button>-->
           <label for="login">
-            <button class="login" @click="spin=true">Login <b-spinner  small variant="primary" label="Spinning" v-show="spin"></b-spinner>
+            <button class="loginbtn" @click="spin=true">
+              Login
+              <b-spinner small variant="primary" label="Spinning" v-show="spin"></b-spinner>
             </button>
           </label>
-          <br />
-        </form>
-      </b-card>
+        </b-card>
+      </form>
     </div>
-
-    <br />
-    <br />
   </div>
 </template>
 <script>
 import { required } from "vuelidate/lib/validators";
-import instance from '../plugins/axios_i';
+import instance from "../axios_i";
 
 export default {
   name: "Login",
-
   data: function() {
     return {
       username: "",
@@ -68,7 +61,6 @@ export default {
   },
   validations: {
     username: { required },
-
     password: { required }
   },
   methods: {
@@ -81,67 +73,59 @@ export default {
         this.spin = false;
         return;
       } else {
-        instance.post('/rest-auth/login'),{
-           username: this.username,
-             password: this.password,
-        }
-        
+        instance
+          .post("/rest-auth/login/", {
+            username: this.username,
+            password: this.password
+          })
 
-          .then(resp => {
-         if (resp.status === 200) {
-        this.spin = false;
-        this.$router.push({ name: "Board" });
+          .then(response => {
+            console.log(response);
+            const token = response.data.token;
+            localStorage.setItem("TOKEN", token);
 
-        
+            if (response.status === 200) {
+              this.spin = false;
 
-        }
-      })
-      .catch(error => {
-        this.spin=false
-        console.log(error);
-        alert("Invalid username or password");
-        this.$router.push({ name: "Login" });/**/
-      }) 
-
-      
-
-        }
-        
-
-         
-
-      
-  
+              this.$router.push({ name: "Board" });
+            }
+          })
+          .catch(error => {
+            this.spin = false;
+            console.log(error);
+            alert("Invalid username or password");
+            this.$router.push({ name: "Login" });
+          });
       }
     }
-  };
-    
+  }
+};
 </script>
 
-  
 
 <style>
-.form {
-  display: border-box;
-  height: 350px;
-  width: 520px;
-  border: 0px solid;
-  box-shadow: 220px;
+.loginpage {
+  margin-top: 80px;
 }
-.login {
-  background-color :rgba(21, 252, 0, 0.781);
-  color: honeydew;
-  align-content: center;
+.loginform {
+  margin-top: 40px;
 }
-.formsec {
-  justify-content: center;
-  background-color: white;
-  height: auto;
-  width: auto;
+.myinput {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 50px;
+  width: 300px;
 }
-.image {
-  width: 550px;
-  height: 550px;
-  position: center;
+.card {
+  width: 500px;
+  height: 300px;
+  text-align: center;
+  display: flex;
+  align-content: space-around;
+}
+.loginbtn {
+  margin-top: 20px;
+  text-align: center;
+  background-color: cornflowerblue;
 }
 </style>
