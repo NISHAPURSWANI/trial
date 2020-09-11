@@ -5,7 +5,7 @@
       <boards></boards>
       <between></between>
     </div>
-    <br />
+    <br/>
     <div class="mylist">
       <list></list>
       <div  @click="box=true" >

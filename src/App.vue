@@ -1,21 +1,18 @@
-
 <template>
   <div id="app">
-    <div id="nav">
-
-    </div>
-    <router-view />
+    <router-view/>
   </div>
 </template>
-<style lang="scss">
+
+<style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   display: flex;
   justify-content: center;
+  text-align: center;
   height:100vh;
   width:100vw;
 }
