@@ -20,23 +20,78 @@ const routes = [
     path: "/login",
     name: "Login",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../components/Login.vue")
+      import(/* webpackChunkName: "login" */ "../components/Login.vue")
   },
   {
     path: "/board",
     name: "Board",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../components/Board.vue")
+      import(/* webpackChunkName: "board" */ "../components/Board.vue"),
+   meta:{ requiresAuth: true }
   },
-  
+
 ];
-
-
 
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
+ // base: process.env.rest-auth/login,
+
   routes
 });
 
+router.beforeEach((to, from, next) => {
+  let token = localStorage.getItem('TOKEN');
+  
+if(token){
+  console.log("hello1")
+
+  if(token==='undefined'){
+    next('/login')
+    console.log("hello")
+  }
+  else{
+    
+    console.log("hello2")
+
+    next()
+  }
+}
+else{
+  console.log("hello3")
+
+  next('/login')
+}
+})
+
 export default router;
+
+ /*if(token){
+    console.log("hello1")
+
+    if(token==='undefined'){
+      next('/login')
+      console.log("hello")
+    }
+    else{
+      
+      console.log("hello2")
+
+      next()
+    }
+  }
+  else{
+    console.log("hello3")
+
+    next('/login')
+  }*/
+ /*if(token===undefined){
+    console.log('hekko')
+    next('/login')
+  }
+  else{
+    console.log('hello')
+    next()
+  }
+})
+*/
