@@ -30,13 +30,8 @@
         <i class="fa fa-bell"></i>
       </button>
       <button class="circular" @click="logout()" ></button>
-     <!-- <div v-show="log"><b-modal><button @click="logout()">Logout</button></b-modal></div>-->
       <div>
-  <!--<b-button v-b-modal.modal-1 class="circular"></b-button>
-
-  <b-modal id="modal-1" title="User2">
-    <button  @click="logout()" >Logout</button>
-  </b-modal>-->
+  
 </div>
     </div>
   </div>
@@ -47,14 +42,19 @@ export default {
     return{
       //log:false
 
+
+
     }
   },
   methods:{
   logout:function(){
   this.$router.push({ name: "Login" });
-  }
+  localStorage.removeItem('token')
 
   }
+
+  },
+    
 }
 </script>
 <style>
