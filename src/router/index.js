@@ -1,72 +1,82 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+// import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    redirect: "/login",
   },
   {
     path: "/about",
     name: "About",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
     path: "/login",
     name: "Login",
     component: () =>
-      import(/* webpackChunkName: "login" */ "../components/Login.vue")
+      import(/* webpackChunkName: "login" */ "../components/Login.vue"),
   },
   {
     path: "/board",
     name: "Board",
     component: () =>
       import(/* webpackChunkName: "board" */ "../components/Board.vue"),
-   meta:{ requiresAuth: true }
+    meta: { requiresAuth: true },
   },
-
 ];
 
 const router = new VueRouter({
   mode: "history",
-  base: process.env.BASE_URL,
- // base: process.env.rest-auth/login,
-
-  routes
+  routes,
 });
 
 router.beforeEach((to, from, next) => {
-  let token = localStorage.getItem('TOKEN');
-  
-if(token){
-  console.log("hello1")
-
-  if(token==='undefined'){
-    next('/login')
-    console.log("hello")
+  if (to.name === "Login") {
+    next();
+  } else {
+    let token = localStorage.getItem("TOKEN");
+    console.log(token);
+    if (token && token !== "undefined") {
+      console.log("token present", token, to);
+      next();
+    } else {
+      console.log("token not present", token, to);
+      next("/login");
+    }
   }
-  else{
-    
-    console.log("hello2")
+});
 
-    next()
-  }
-}
-else{
-  console.log("hello3")
+// router.beforeEach((to, from, next) => {
 
-  next('/login')
-}
-})
+// if(token){
+//   console.log("hello1")
+
+//   if(token==='undefined'){
+//     next('/login')
+//     console.log("hello")
+//   }
+//   else{
+
+//     console.log("hello2")
+
+//     next()
+//   }
+// }
+// else{
+//   console.log("hello3")
+
+//   next('/login')
+// }
+// })
 
 export default router;
 
- /*if(token){
+/*if(token){
     console.log("hello1")
 
     if(token==='undefined'){
@@ -85,7 +95,7 @@ export default router;
 
     next('/login')
   }*/
- /*if(token===undefined){
+/*if(token===undefined){
     console.log('hekko')
     next('/login')
   }
