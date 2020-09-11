@@ -1,19 +1,17 @@
-
 import axios from 'axios';
+//import Vue from "vue";
+
+
 
 const instance = axios.create({
-    baseURL: 'https://trello-clone-123.herokuapp.com',
-    headers: {'Authorization': 'token'},
-  })
-  if((
-  axios.defaults.headers.common['Authorization'] = localStorage.token)){
-  this.$router.push({ name: "Board" });
-  }
-  else{
-    delete axios.defaults.headers.common['Authorization']
-    localStorage.removeItem('token'),
-    this.$router.push({ name: "Login" });
+  baseURL: 'https://trello-clone-123.herokuapp.com',
 
-
+})
+let newtoken = localStorage.getItem('TOKEN');
+if(newtoken&&newtoken!=='undefined') {
+  instance.defaults.headers = {
+    Authorization: 'Token ' + newtoken
   }
-  export default instance;
+}
+
+export default instance;
