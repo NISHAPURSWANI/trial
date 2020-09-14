@@ -49,7 +49,6 @@
 <script>
 import { required } from "vuelidate/lib/validators";
 import instance from "../axios_i";
-
 export default {
   name: "Login",
   data: function() {
@@ -78,17 +77,13 @@ export default {
             username: this.username,
             password: this.password
           })
-
           .then(response => {
             console.log(response);
-            const token = response.data.token;
+            const token = response.data.key;
             localStorage.setItem("TOKEN", token);
-
-            if (response.status === 200) {
-              this.spin = false;
-
-              this.$router.push({ name: "Board" });
-            }
+            console.log(token)
+            this.spin = false;
+            this.$router.push({ name: "Board" });
           })
           .catch(error => {
             this.spin = false;

@@ -29,6 +29,7 @@
       <button class="mybtnrhs">
         <i class="fa fa-bell"></i>
       </button>
+      <!--<router-link :to="{name:'Login'}"><button class="circular" @click="logout()" ></button></router-link>-->
       <button class="circular" @click="logout()" ></button>
       <div>
   
@@ -48,8 +49,9 @@ export default {
   },
   methods:{
   logout:function(){
-  this.$router.push({ name: "Login" });
-  localStorage.removeItem('token')
+
+  this.$router.push( "/login" );
+  localStorage.removeItem("TOKEN")
 
   }
 
