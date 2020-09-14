@@ -26,7 +26,6 @@
             placeholder="Enter your password"
             @keypress.enter="validationStatus()"
           />
-          {{password}}
           <div v-if="!$v.password.required" class="invalid-feedback">The password field is required.</div>
 
           <br />
