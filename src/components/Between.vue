@@ -1,85 +1,144 @@
 <template>
   <div class="between">
-    <span>
-      <b>Front-end Training</b>
-    </span> &nbsp; |
-    <button class="starbtn">
-      <i class="fa fa-star" style="color:orange;"></i>
-    </button> &nbsp;|
-    <span>
-      <b>Personal</b>
+    <div class="between1">
+      <h style="Font-size:20px;">
+        <b>Front-end Training</b>
+      </h>
+
+      <button class="mybtnstar">
+        <i class="far fa-star" style="font-size:18px;color:orange "></i>
+      </button>
+      <span class="btn-divider"></span>
+
+      <span class="normtext">Personal</span>
+      <span class="btn-divider"></span>
+
+      <button class="mybtnprivate">
+        <i class="fa fa-lock" style="font-size:14px; color:white;"></i> &nbsp; Private
+      </button>
+      <span class="btn-divide"></span>
+
+      &nbsp; &nbsp;
+      <i class="fas fa-circle" style="font-size:24px"></i>
+      <i class="fas fa-circle" style="font-size:24px"></i>
+      <i class="fas fa-circle" style="font-size:24px"></i>
+      <i class="fas fa-circle" style="font-size:24px"></i>
+      <i class="fas fa-circle" style="font-size:24px"></i>
+      &nbsp;
+      <button class="mybtnin">Invite</button>
+    </div>
+
+    <span class="menu-btn">
+      <button class="mybtnbutler">
+        <i class="fas fa-concierge-bell" style="font-size:18px;color:white; "></i>&nbsp; Butler
+      </button>
+      <button class="mybtnbutler">
+        <i class="fas fa-ellipsis-h menu-btn-icon" style="font-size:18px;color:white; "></i>&nbsp; Show Menu
+      </button>
     </span>
-    &nbsp; |
-    <button class="pvtbtn">
-      <i class="fa fa-lock" style="color:white;"></i> &nbsp;Private
-    </button>
-    <button class="circle"></button>
-    <button class="circle"></button>
-    <button class="circle"></button>
-    <button class="circle"></button>
-    <button class="circle"></button>
-    <button class="invite">Invite</button>
-    <button class="mybtnbutler">
-      <i class="fas fa-concierge-bell" style="font-size:18px;color:white;"></i>&nbsp; Butler
-    </button>
-    <button class="mybtnmenu">
-      <i class="fas fa-ellipsis-h menu-btn-icon" style="font-size:18px;color:white;"></i>&nbsp;Show Menu
-    </button>
   </div>
 </template>
 <style >
 .between {
-  text-align: left;
-  color: white;
-  margin-left: 10px;
-  margin-top: 20px;
-}
-.pvtbtn {
-  color: white;
-  margin-right: 30px;
-  background: rgba(255, 255, 255, 0.24);
-  border: 0px;
-  border-radius: 4px;
-}
-.starbtn {
-  background: rgba(255, 255, 255, 0.24);
-  border: 0px;
-  border-radius: 4px;
+    flex-basis: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.8rem 0;
+    padding: 0 1rem;
+    color: #f6f6f6;
 }
 
-.circle {
-  border-radius: 50%;
-  border: 0px;
-  /*margin-left:0.4rem;*/
-  height: 25.2px;
-  width: 25.2px;
-  margin-top: -35px;
-  border: 0px;
+.between1 {
+    display: flex;
+    
 }
-.invite {
-  margin-left: 40px;
-  color: white;
-  border-radius: 4px;
-  margin-right: 40px;
-  background: rgba(255, 255, 255, 0.24);
-  border: 0px;
+
+.between1 .btn {
+    margin-right: 1rem;
 }
-.mybtnbutler {
-  color: white;
-  background: rgba(255, 255, 255, 0.24);
-  border: 0px;
+
+.between1 .btn:last-of-type {
+    margin-right: 0;
+}
+
+.between .btn {
+    font-size: 1.4rem;
+    font-weight: 300;
+    padding: 0 0.6rem;
+    border-radius: 0.3rem;
+    height: 3rem;
+}
+
+.between .btn:hover {
+    background-color: #006aa8;
+}
+.mybtnstar{
+  color:white;
+ background: rgba(255, 255, 255, 0.24);
+   border:0px;
+  margin-left: 0.4rem;
   border-radius: 0.4rem;
-  display: block;
-  margin-left: 1300px;
-  margin-top: -25px;
+  display:block;
+  width:32px;
+  height:25.2px;
+  /*margin-top:10px;
+  margin-bottom:10px;*/
+  margin-left: 2rem;  
 }
-.mybtnmenu {
-  color: white;
-  background: rgba(255, 255, 255, 0.24);
-  border: 0px;
+.normtext{
+   color:white;
+   
+   margin-left: 2rem;  
+}
+
+.mybtnprivate{
+  color:white;
+ background: rgba(255, 255, 255, 0.24);
+   border:0px;
+  margin-left: 0.4rem;
   border-radius: 0.4rem;
-  display: block;
-  margin-left: 1390px;
-  margin-top: -25px;
+  /*display:block;
+  /*width:32px;*/
+  height:25.2px;
+  /*margin-top:10px;
+  margin-bottom:10px;*/
+  margin-left: 2rem;
+  margin-right:2rem;
 }
+.mybtnin{
+  color:white;
+ background: rgba(255, 255, 255, 0.24);
+   border:0px;
+  margin-left: 0.4rem;
+  border-radius: 0.4rem;
+  /*display:block;*/
+  width:58px;
+  height:25.2px;
+  /*margin-top:10px;
+  margin-bottom:10px;*/
+  margin-left: 4rem;
+  margin-right:4rem;
+}
+
+.mybtnbutler{
+  color:white;
+ background: rgba(255, 255, 255, 0.24);
+   border:0px;
+  margin-left: 0.4rem;
+  border-radius: 0.4rem;
+  display:block;
+  /*padding: 1em, 1em, 1em, 1em;*/
+
+ 
+  
+}
+.menu-btn {
+  display: flex;
+ flex-direction: row;
+  margin-top:-20px;
+ 
+  
+}
+
 </style>
