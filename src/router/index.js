@@ -52,7 +52,7 @@ const router = new VueRouter({
 router.beforeEach((to,from,next)=>{
 
   let token=localStorage.getItem("TOKEN")
-  if(to.name==="Board"){
+  if(to.name==="Login"){
     if(token){
       console.log(token)
       next()
@@ -62,7 +62,7 @@ router.beforeEach((to,from,next)=>{
     }
   }
   else{
-    next('/login')
+    next()
   }
 })
 export default router
