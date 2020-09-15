@@ -10,7 +10,7 @@ const routes = [
     path: "/",
    // name: "Home",
     //component: Home,
-    redirect: "/board",
+    redirect: "/login",
 
   },
   {
@@ -38,6 +38,13 @@ const routes = [
       import(/* webpackChunkName: "board" */ "../components/Board.vue"),
       meta: { requiresAuth: true },
     },
+    {
+      path: "/modal",
+      name: "Modal",
+      component: () =>
+        import(/* webpackChunkName: "board" */ "../components/Modal.vue"),
+      },
+  
 
 ];
 
