@@ -2,7 +2,7 @@
   <div>
     <div>
       <ul class="listoflist">
-        <li @click="modal=true">
+       <li @click="modal=true">
           Complete mock-up for client website
           <br />&nbsp;
           <i class="fas fa-paperclip" style="font-size:12px;"></i>&nbsp;1
@@ -19,8 +19,8 @@
         </li>
         <div v-show="newcard">
           <li>
-            <input type="text" class="listoflist" />
-          </li>
+        <b-form-textarea id="textarea-plaintext" plaintext ></b-form-textarea>
+      </li>
           <div class="cardbuttons" v-show="added">
             <button class="add" @click="added=false">Add card</button>
             <button class="closecard" @click="newcard=false">Close</button>
@@ -35,6 +35,7 @@
   </div>
 </template>
 <script>
+
 import Modal from "@/components/Modal.vue";
 export default {
   name: "Card",
@@ -51,6 +52,8 @@ export default {
 };
 </script>
 <style scoped>
+
+
 .listoflist {
   flex: 1;
   display: flex;
@@ -58,6 +61,7 @@ export default {
   align-content: start;
   padding: 6px 3px;
   overflow-y: auto;
+
 }
 
 .listoflist li {
@@ -66,7 +70,7 @@ export default {
   line-height: 1.3;
   background-color: #fff;
   padding: 6px 6px;
-  color: #4d4d4d;
+  color: rgba(45,50,58,1);
   border-bottom: 0.1rem solid #ccc;
   border-radius: 3px;
   margin-bottom: 5px;
@@ -74,15 +78,21 @@ export default {
 .aac {
   background-color: ebecf0;
   border: 0px;
+  color:#5e6c84
 }
 .cardbuttons {
   display: flex;
   margin-left: 140px;
 }
 .add {
-  background-color: green;
+  background-color: #5aac44;
 }
 .closecard {
   background-color: red;
+}
+.listoflist li:hover{
+      background: rgba(45, 50, 58 ,0.1);
+;
+
 }
 </style>

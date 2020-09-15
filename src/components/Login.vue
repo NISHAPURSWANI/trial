@@ -36,10 +36,11 @@
           </button>-->
           <label for="login">
             <button class="loginbtn" @click="spin=true">
-              Login
+              <b>Log in</b>
               <b-spinner small variant="primary" label="Spinning" v-show="spin"></b-spinner>
             </button>
           </label>
+
         </b-card>
       </form>
     </div>
@@ -97,6 +98,13 @@ export default {
           });
       }
     }
+  },
+  created(){
+    const token=localStorage.getItem("TOKEN")
+    if(token){
+      this.$router.push({ name: "Board" });
+
+    }
   }
 };
 </script>
@@ -111,20 +119,31 @@ export default {
 }
 .myinput {
   margin-top: 15px;
-  margin-bottom: 15px;
   height: 50px;
   width: 300px;
 }
 .card {
-  width: 500px;
-  height: 300px;
+  width: 550px;
+  height: 350px;
   text-align: center;
   display: flex;
   align-content: space-around;
+  color:#5E6C84;
 }
 .loginbtn {
   margin-top: 20px;
   text-align: center;
-  background-color: cornflowerblue;
+  background-color: #5AAC44;
+  width: 300px;
+  border:0px;
+  border-radius: 4px;
+  color:white;
+  height: 35px;
+
+
+}
+.loginbtn:hover{
+    background:#5cd839;
+
 }
 </style>
