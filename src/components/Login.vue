@@ -97,18 +97,7 @@ export default {
           });
       }
     }
-  },
- /* mounted(){
-    const token= localStorage.getItem("TOKEN")
-    if(token){
-      this.$router.push({ name: "Board" });
-
-    }
-      }*/
-      mounted(){
-        let token=localStorage.getItem("TOKEN")
-        console.log("token in mounted", token)
-      }
+  }
 };
 </script>
 

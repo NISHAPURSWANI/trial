@@ -1,26 +1,28 @@
 <template>
   <div class="modal" v-show="modal">
-    <div >
+    <div>
       <div class="modal_text">Modal Title:</div>
       <div class="modal_body">
-          Description:<br>
-          Attachments:<br>
-              </div>
-     <input type="text" placeholder="write your comment" class="inputboxmodal">
+        Description:
+        <br />Attachments:
+        <br />
+      </div>
+      <input type="text" placeholder="write your comment" class="inputboxmodal" />
 
-          
-          <button class="closemodal" @click="modal=false"><b>Close</b></button>
+      <button class="closemodal" @click="modal=false">
+        <b>Close</b>
+      </button>
     </div>
   </div>
 </template>
 <script>
 export default {
-    data:function(){
-        return{
-        modal:true
-        }
-    }
-}
+  data: function() {
+    return {
+      modal: true
+    };
+  }
+};
 </script>
 <style scoped>
 .modal {
@@ -44,14 +46,14 @@ export default {
 .closemodal {
   background-color: red;
   height: 40px;
-  width:60px;
+  width: 60px;
   margin-left: 430px;
   margin-top: 330px;
 }
-.inputboxmodal{
-display:flex;
-width:250px;
- margin-left:10px;
- height:30px;
+.inputboxmodal {
+  display: flex;
+  width: 250px;
+  margin-left: 10px;
+  height: 30px;
 }
 </style>

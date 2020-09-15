@@ -34,6 +34,7 @@
         <i class="fas fa-ellipsis-h menu-btn-icon" style="font-size:18px;color:white; "></i>&nbsp; Show Menu
       </button>
     </span>
+    
   </div>
 </template>
 <style scoped>
@@ -58,7 +59,8 @@
   display:block;
   width:32px;
   height:25.2px;
-  margin-left: 20px;  
+  margin-left: 20px; 
+  margin-right:20px; 
 }
 .menu-btnrhs{
   display:flex;

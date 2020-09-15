@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-   // name: "Home",
+    // name: "Home",
     //component: Home,
     redirect: "/login",
 
@@ -28,7 +28,7 @@ const routes = [
       //import(/* webpackChunkName: "login" */ "../components/Login.vue"),
       import(/* webpackChunkName: "login" */ "../components/Login.vue"),
 
-    meta:{requiresAuth: false }
+    meta: { requiresAuth: false }
 
   },
   {
@@ -36,15 +36,9 @@ const routes = [
     name: "Board",
     component: () =>
       import(/* webpackChunkName: "board" */ "../components/Board.vue"),
-      meta: { requiresAuth: true },
-    },
-    {
-      path: "/modal",
-      name: "Modal",
-      component: () =>
-        import(/* webpackChunkName: "board" */ "../components/Modal.vue"),
-      },
-  
+    meta: { requiresAuth: true },
+  },
+
 
 ];
 
@@ -56,19 +50,19 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to,from,next)=>{
+router.beforeEach((to, from, next) => {
 
-  let token=localStorage.getItem("TOKEN")
-  if(to.name !== "Login"){
-    if(token){
+  let token = localStorage.getItem("TOKEN")
+  if (to.name !== "Login") {
+    if (token) {
       console.log(token)
       next()
     }
-    else{
+    else {
       next('/login')
     }
   }
-  else{
+  else {
     next()
   }
 })
