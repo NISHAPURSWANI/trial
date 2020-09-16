@@ -44,12 +44,19 @@
   justify-content: flex-start;
   color:white;
   Font-size:18px;
+  Font-weight:700px;
 
 }
 .between{
   margin-top: 25px;
   margin-bottom: 25px;
 }
+.normtext{
+   color:white;
+   margin-left: 20px; 
+   font-weight: 14px; 
+}
+
 .mybtnstar{
   color:white;
  background: rgba(255, 255, 255, 0.24);
@@ -60,7 +67,6 @@
   width:32px;
   height:25.2px;
   margin-left: 20px; 
-  margin-right:20px; 
 }
 .menu-btnrhs{
   display:flex;
@@ -74,6 +80,7 @@
   margin-left: 8px;
   border-radius: 4px;
   display:block;
+  font-size:14px;
 }
 .mybtnprivate{
   color:white;
@@ -84,15 +91,32 @@
   height:25.2px;
   margin-left: 20px;
   margin-right:20px;
+  font-size: 14px;
 }
 .mybtnin{
   color:white;
  background: rgba(255, 255, 255, 0.24);
    border:0px;
+  border-radius: 4px;
   width:58px;
   height:25.2px;
-  margin-left: 4px;
-  margin-right:4px;
+  margin-left: 40px;
+  margin-right:40px;
+  font-size:16px;
 }
+.btn-divider {
+  float: left;
+  border-left: 1px solid ;
+  height: 1.6em;
+  margin: 0em 0em 1em 1em;
+}
+.btn-divide {
+  float: left;
+  border-left: 1px solid ;
+  height: 1.6em;
+  margin: 0em 0em 1em 0em;
+  margin-right:10px;
+}
+
 
 </style>

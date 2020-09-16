@@ -69,7 +69,39 @@ export default {
   justify-content:flex-end;
 }
 
-.list:hover{
-  
-}
 </style>
+<!--<template>
+<div>
+<div class="listbox">
+  <div class="title">
+    Hello from list
+  </div>
+</div>
+</div>
+</template>
+<style scoped>
+.listbox{
+  
+  width:300px;
+  background-color: #ebecf0;
+  margin-left:20px;
+  border-radius: 4px;
+  margin-right:20px;
+  
+
+}
+.title{
+background-color: #ebecf0;
+  flex-direction: column;
+  border-radius: 3px;
+  margin-right: 10px;
+  text-align: start;
+  margin-left: 20px;
+  max-height: 100%;
+  font-size:20px;
+  font-weight:bold;
+  line-height: 24px;
+  font-family: 'Roboto';
+
+}
+</style>-->

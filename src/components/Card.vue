@@ -65,15 +65,17 @@ export default {
 }
 
 .listoflist li {
-  font-size: 15px;
-  font-weight: 200;
-  line-height: 1.3;
+  font-size: 16px;
+  font-weight: 200px;
+  line-height: 20px;
   background-color: #fff;
   padding: 6px 6px;
   color: rgba(45,50,58,1);
-  border-bottom: 0.1rem solid #ccc;
   border-radius: 3px;
   margin-bottom: 5px;
+ font-family:'Roboto';
+ text-align:left;
+
 }
 .aac {
   background-color: ebecf0;
