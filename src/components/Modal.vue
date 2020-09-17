@@ -1,4 +1,4 @@
-<template>
+<!--<template>
   <div class="modal" v-show="modal">
     <div>
       <div class="modal_text">Modal Title:</div>
@@ -56,4 +56,17 @@ export default {
   margin-left: 10px;
   height: 30px;
 }
-</style>
+</style>-->
+<template>
+  <div>
+  <b-modal id="modal-1">
+    <p class="my-4">Hello from modal! {{card.title}}</p>
+  </b-modal>
+</div>
+</template>
+<script>
+export default {
+    props:['card'],
+
+}
+</script>

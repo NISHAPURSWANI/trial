@@ -38,6 +38,14 @@ const routes = [
       import(/* webpackChunkName: "board" */ "../views/Board.vue"),
     meta: { requiresAuth: true },
   },
+  {
+    path: "/modal",
+    name: "Modal",
+    component: () =>
+      import(/* webpackChunkName: "board" */ "../components/Modal.vue"),
+    meta: { requiresAuth: true },
+  },
+
 
 
 ];

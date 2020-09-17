@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div >
+    <div class="render">
     <div class="listbox">
       <div class="title">
         {{list.title}}
@@ -7,34 +8,53 @@
           class="fas fa-ellipsis-h"
           style="display:flex; margin-left:200px; margin-top:-24px;"
         ></i>
-      </div>
-
+   </div>
       <div v-for="card in list.card_details" :key="card.id">
-        <card :card="card"></card>
+      
+        <card :card="card" ></card>
       </div>
-    </div>
+   <div class="newcard" v-show="newcard">
+  <b-textarea class="newtext" ></b-textarea>
+  <div class="cardbtn">
+  <button class="addcardbtn" @click="addcard()" >Add Card</button>
+  <button class="closebutton" @click="newcard=false"><i class="fas fa-times"></i></button>
+  </div>
+      </div>
 
-    <br />
+      <button class="addcard" @click="newcard=true">+add another card</button>
+    </div>
+  </div>
+
   </div>
 </template>
 <script>
 import Card from "@/components/Card.vue";
+import instance from '../axios_i';
 
 export default {
   props: ["list"],
   name: "List",
   components: {
-    Card
+    Card,
+    // Modal
   },
   data: function() {
     return {
-      newcard: false
+      newcard: false,
+      title:''
     };
   },
-  methods: {
-    addcard: function() {}
+methods:{
+  addcard(){
+    instance.post('/cards/'),{
+      title:this.title,
+      description:'',
+      // attachment:'',
+      list:'"21c33ef9-f3e7-42f4-924e-8a99339bdc0a"'
+    }
   }
-};
+}
+  }
 </script>
 
 <style scoped>
@@ -44,9 +64,7 @@ export default {
   margin-left: 20px;
   border-radius: 4px;
   margin-right: 20px;
-  margin-right: 80px;
-  display: flex;
-  flex-direction: column;
+ 
 }
 .title {
   background-color: #ebecf0;
@@ -63,15 +81,15 @@ export default {
   padding-top: 6px;
   padding-bottom: 2px;
   color: rgb(118, 118, 118);
-  display: flex;
-  flex-direction: column;
+
+
 }
 .addcard {
   width: 200px;
   background-color: #ebecf0;
   text-align: start;
   border: 0px;
-  margin-left: -35px;
+  margin-left:-50px;
 }
 .newtext {
   height: 50px;
@@ -103,18 +121,13 @@ export default {
 .closebutton:hover {
   color: black;
 }
-.addlist {
-  color: white;
-  background: rgba(255, 255, 255, 0.24);
-  border: 0px;
-  margin-left: 8px;
+/*.addnewlist{
+
+  background: rgba( 255, 255, 255, 0.24);
+  border:0px;
   border-radius: 4px;
-  display: block;
-  font-size: 14px;
-}
-.menu-btnlist {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: -400px;
-}
+  font-size:14px;
+  display: block;  
+
+}*/
 </style>

@@ -1,11 +1,24 @@
 <template>
   <div>
-      <b-card class="cards"><b-card-body class="cardbody"> {{card.title}}</b-card-body></b-card>
+      <b-card class="cards"><b-card-body class="cardbody" @click="dmodal=true"  v-b-modal.modal-1> {{card.title}}</b-card-body></b-card>
+      <div v-show="dmodal">
+        <Modal/>
+      </div>
   </div>
 </template>
 <script>
+import Modal from "@/components/Modal.vue";
+
 export default {
-  props:['card']
+  props:['card'],
+components:{
+ Modal
+},
+  data:function(){
+    return{
+    dmodal:false
+    }
+  }
 }
 </script>
 <style>

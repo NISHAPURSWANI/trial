@@ -35,7 +35,10 @@
       </button>
 
     </span>
-        
+           <span class="menu-btnlist">
+      <button class="addlist">+ Add another list</button>
+    </span>
+ 
   </div>
 </template>
 <style scoped>
@@ -67,12 +70,14 @@
   display:block;
   width:32px;
   height:25.2px;
-  margin-left: 20px; 
+  margin-left: 20px;
+  /* padding: 2px 2px 2px 2px;  */
 }
 .menu-btnrhs{
   display:flex;
  justify-content: flex-end;
-  margin-top:-35px
+  margin-top:-45px;
+  margin-bottom:10px;
 }
 .mybtnbutler{
   color:white;
@@ -117,6 +122,20 @@
   height: 1.6em;
   margin: 0em 0em 1em 0em;
   margin-right:10px;
+}
+.addlist {
+  color: white;
+  background: rgba(255, 255, 255, 0.24);
+  border: 0px;
+  margin-left: 8px;
+  border-radius: 4px;
+  display: block;
+  font-size: 14px;
+}
+.menu-btnlist {
+  display: flex;
+  justify-content: flex-end;
+  /* margin-top: 300px; */
 }
 
 
