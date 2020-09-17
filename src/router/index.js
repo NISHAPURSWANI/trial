@@ -35,7 +35,7 @@ const routes = [
     path: "/board",
     name: "Board",
     component: () =>
-      import(/* webpackChunkName: "board" */ "../components/Board.vue"),
+      import(/* webpackChunkName: "board" */ "../views/Board.vue"),
     meta: { requiresAuth: true },
   },
 

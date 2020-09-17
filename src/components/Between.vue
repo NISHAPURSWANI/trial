@@ -33,8 +33,9 @@
       <button class="mybtnbutler">
         <i class="fas fa-ellipsis-h menu-btn-icon" style="font-size:18px;color:white; "></i>&nbsp; Show Menu
       </button>
+
     </span>
-    
+        
   </div>
 </template>
 <style scoped>
@@ -117,6 +118,7 @@
   margin: 0em 0em 1em 0em;
   margin-right:10px;
 }
+
 
 
 </style>

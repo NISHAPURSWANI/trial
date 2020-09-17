@@ -81,7 +81,7 @@ export default {
 
           .then(response => {
             console.log(response);
-            const token = response.data.token;
+            const token = response.data.key;
             localStorage.setItem("TOKEN", token);
 
             if (response.status === 200) {
