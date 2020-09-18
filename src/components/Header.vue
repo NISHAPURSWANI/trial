@@ -3,17 +3,17 @@
     <div>
       <div class="menu">
         <button class="mybtn">
-          <i class="fa fa-th" style="font-size:15px; color:white;"></i>
+          <i class="fa fa-th" style="font-size:15px; color:white;position: static; margin-bottom:1px;"></i>
         </button>
         <button class="mybtn">
-          <i class="fas fa-home" style="font-size:15px;color:white; "></i>
+          <i class="fas fa-home" style="font-size:15px;color:white;position: static; margin-bottom:2px; "></i>
         </button>
         <button class="mybtnboard">
-          <i class="fab fa-trello" style="font-size:15px; color:white;"></i> &nbsp; Boards
+          <i class="fab fa-trello" style="font-size:15px; color:white;position: static; margin-bottom:1px;"></i> &nbsp; Boards
         </button>
         <input type="text" class="inputbox" />
         <button class="mybtnsearch">
-          <i class="fa fa-search" style="font-size:15px; color:white;"></i>
+          <i class="fa fa-search" style="font-size:15px; color:white;position: static; margin-bottom:1px;"></i>
         </button>
       </div>
     </div>
@@ -26,13 +26,13 @@
     </div>
     <div class="menurhs">
       <button class="mybtnrhs">
-        <i class="fas fa-plus" style="font-size:13px; color:white;"></i>
+        <i class="fas fa-plus" style="font-size:13px; color:white;position: static; margin-bottom:1px;"></i>
       </button>
       <button class="mybtnrhs">
-        <i class="fa fa-info-circle" style="font-size:15px; color:white;"></i>
+        <i class="fa fa-info-circle" style="font-size:15px; color:white;position: static; margin-bottom:1px;"></i>
       </button>
       <button class="mybtnrhs">
-        <i class="far fa-bell" style="font-size:15px;color:white;"></i>
+        <i class="far fa-bell" style="font-size:15px;color:white;position: static; margin-bottom:1px;"></i>
       </button>
       <button class="circular" @click="logout()"></button>
     </div>
@@ -70,7 +70,7 @@ export default {
 .menurhs {
   display: flex;
   justify-content: flex-end;
-  margin-top: -40px;
+  margin-top: -45px;
 }
 .mybtn {
   color: white;
@@ -101,6 +101,7 @@ export default {
   height: 25.2px;
   width: 25.2px;
   margin-top: 20px;
+  margin-right:8px;
 }
 .mybtnsearch {
   color: white;
