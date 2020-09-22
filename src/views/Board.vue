@@ -29,15 +29,11 @@ export default {
     };
   },
   created() {
-    // const token=localStorage.getItem(  "TOKEN")
-    // console.log(token,"from ls,")
     instance
       .get("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
       .then(response => {
         this.lists = response.data.list_details;
-        // console.log(response);
       });
-    // console.log("hello")
   }
 };
 </script>

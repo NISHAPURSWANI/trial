@@ -45,6 +45,13 @@ const routes = [
       import(/* webpackChunkName: "board" */ "../components/Modal.vue"),
     meta: { requiresAuth: true },
   },
+  {
+    path: "/list",
+    name: "List",
+    component: () =>
+      import(/* webpackChunkName: "board" */ "../components/List.vue"),
+    meta: { requiresAuth: true },
+  },
 
 
 

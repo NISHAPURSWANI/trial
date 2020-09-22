@@ -17,6 +17,7 @@ if(newtoken&&newtoken!=='undefined') {
 export default instance;*/
 import axios from "axios";
 //import Vue from "vue";
+// Vue.forceUpdate()
 
 const instance = axios.create({
   baseURL: "https://trello-clone-123.herokuapp.com",

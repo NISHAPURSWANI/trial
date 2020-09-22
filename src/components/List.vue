@@ -50,7 +50,6 @@ export default {
   },
   methods: {
     addcard(list_id, list_cardcount) {
-      this.cardbtns = false;
       console.log(list_id, list_cardcount);
       instance
         .post("/cards/", {
@@ -58,16 +57,39 @@ export default {
           list: list_id,
           order: list_cardcount
         })
-
-        .then(response => {
+         .then(response => {
           console.log(response);
-        })
+          this.cardbtns = false;
+          this.newcard = false;
+          
+      //  this.$router.push({ name: "List" });
+        //   instance.get("/lists/")     
+        //    .then(response => {
+        // this.list = response.data.list;
+        // console.log(response ,"from list")
+
+        // })
+       
+       
+        //   instance.get("/boards/")     
+        //    .then(response => {
+        // this.list = response.data.list_details;
+        // console.log(response ,"from list")
+
+         })
+      
+
+
         .catch(function(error) {
           console.log(error);
+
           alert("Enter all the card details properly");
+          this.cardbtns = false;
+          this.newcard = false;
+          // location.reload()
         });
     }
-  }
+    }
 };
 </script>
 
@@ -78,7 +100,7 @@ export default {
   margin-left: 20px;
   border-radius: 4px;
   margin-right: 20px;
-  max-height: 50vh;
+  max-height: 75vh;
   overflow-y: scroll;
 }
 .title {
@@ -110,7 +132,7 @@ export default {
 .newtext {
   height: 50px;
   padding: 0px;
-  margin-top: 30px;
+  margin-top: 2px;
   margin-bottom: 6px;
   margin-left: 5px;
   margin-right: 5px;
@@ -136,5 +158,8 @@ export default {
 }
 .closebutton:hover {
   color: black;
+}
+.newcard {
+  padding: 3px;
 }
 </style>

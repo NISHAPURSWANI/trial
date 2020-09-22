@@ -1,13 +1,40 @@
 <template>
   <div>
     <b-card class="cards">
-      <b-card-body class="cardbody">{{card.title}}</b-card-body>
+      <!-- <b-card-body class="cardbody"  @click="showmodal(card.id)"  v-b-modal.modal-1   >{{card.title}} {{card.description}},
+          {{card.attachments}} 
+
+      </b-card-body>-->
+      <b-card-body class="cardbody" @click="showmodal(card.id)" v-b-modal.modal-1>{{card.title}}</b-card-body>
     </b-card>
+    <div v-show="cardmodal">
+      <b-modal id="modal-1" hide-footer hide-header>
+        <p class="my-4">
+          HELLO FROM MODAL COMPONENT
+          {{card.title}},
+          {{card.description}},
+          {{card.attachments}}
+        </p>
+      </b-modal>
+    </div>
   </div>
 </template>
 <script>
 export default {
-  props: ["card"]
+  props: ["card"],
+  components: {},
+  data: function() {
+    return {
+      cards: [],
+      cardmodal: false
+    };
+  },
+  methods: {
+    showmodal(card_id) {
+      this.cardmodal = true;
+      console.log(card_id);
+    }
+  }
 };
 </script>
 <style>
