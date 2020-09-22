@@ -61,21 +61,9 @@ export default {
           console.log(response);
           this.cardbtns = false;
           this.newcard = false;
+          this.$emit('ready')
           
-      //  this.$router.push({ name: "List" });
-        //   instance.get("/lists/")     
-        //    .then(response => {
-        // this.list = response.data.list;
-        // console.log(response ,"from list")
-
-        // })
-       
-       
-        //   instance.get("/boards/")     
-        //    .then(response => {
-        // this.list = response.data.list_details;
-        // console.log(response ,"from list")
-
+     
          })
       
 
@@ -86,7 +74,6 @@ export default {
           alert("Enter all the card details properly");
           this.cardbtns = false;
           this.newcard = false;
-          // location.reload()
         });
     }
     }

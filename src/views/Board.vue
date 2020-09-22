@@ -5,7 +5,7 @@
       <Between />
 
       <div class="listrender">
-        <list v-for="list in lists" :key="list.id" :list="list"></list>
+        <list v-for="list in lists" :key="list.id" :list="list" v-on:ready="cardcreate()"></list>
       </div>
     </div>
   </div>
@@ -34,6 +34,16 @@ export default {
       .then(response => {
         this.lists = response.data.list_details;
       });
+  },
+  methods:{
+    cardcreate(){
+      console.log("card create function")
+      instance
+      .get("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
+      .then(response => {
+        this.lists = response.data.list_details;
+      });
+    }
   }
 };
 </script>
