@@ -5,9 +5,12 @@
         <button class="mybtn">
           <i class="fa fa-th" style="font-size:15px; color:white;position: static; margin-bottom:1px;"></i>
         </button>
-        <button class="mybtn">
+         <button class="mybtn">
           <i class="fas fa-home" style="font-size:15px;color:white;position: static; margin-bottom:2px; "></i>
         </button>
+        <!-- <button class="mybtn">
+          <i class= "bi bi-house-door" style="font-size:15px;color:white;position: static; margin-bottom:2px; "></i>
+        </button> -->
         <button class="mybtnboard">
           <i class="fab fa-trello" style="font-size:15px; color:white;position: static; margin-bottom:1px;"></i> &nbsp; Boards
         </button>
