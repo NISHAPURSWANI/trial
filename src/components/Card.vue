@@ -1,62 +1,82 @@
 <template>
   <div>
     <b-card class="cards">
-      <b-card-body class="cardbody" @click="showcard(card.id)" v-b-modal.modal-center>{{card.title}}</b-card-body>
+      <b-card-body
+        class="cardbody"
+        @click="showcard(card.id)"
+        v-b-modal.modal-center
+        >{{ card.title }}</b-card-body
+      >
     </b-card>
     <div v-if="modalc">
-      <b-modal id="modal-center" centered title="BootstrapVue" hide-footer hide-header>
-        <!-- <div class="mymodal"> -->
-        <h5>
-          <p class="card_title">
-            <i
-              class="fa fa-window-maximize"
-              style="margin-left:10px; position:absolute:margin-top:4px;"
-            ></i>
-            {{card.title}}
-                      <button @click="modalc=false,carddesc=false" class="closemodalbtn">
-            <i class="fas fa-times"></i>
-          </button>
-
-          </p>
-          <!--Description-->
-        </h5>
-        <p>
-          <i class="fas fa-align-left" style="margin-left:10px; position:absolute;margin-top:8px;"></i>
-        </p>
-        <p class="headertext">Description:</p>
-        <span v-if="carddesc">
-          <p class="descdesc">{{card.description}}</p>
-        </span>
-        <div>
-          <b-textarea
-            class="desctext"
-            placeholder="enter the card description"
-            @click="carddesc=true"
-          ></b-textarea>
-        </div>
-        <div class="attachment">
+      <b-modal
+        id="modal-center"
+        centered
+        title="BootstrapVue"
+        hide-footer
+        hide-header
+      >
+        <div class="card_title">
+        <span class="titleicon">
           <i
-            class="fas fa-paperclip"
-            style="margin-left:10px; position:absolute:margin-top:4px; font-size:15px;"
+              class="fa fa-window-maximize"
+             
+            ></i>
+        </span>
+        <div class="titlecard">
+
+      {{card.title}}
+        </div>
+      </div>
+       <button
+              @click="(modalc = false), (carddesc = false)"
+              class="closemodalbtn"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+      <!--card description-->
+      <div class="card_description">
+        <span class="descriptionicon"> <i
+            class="fas fa-align-left"
           ></i>
-
-          <span class="attach">Attachments:</span>
-
-
+        </span>
+        <div class="cardin_description">
+      Description:
         </div>
-                     <div class="textcardattach"><span style="padding:30px 10px 0;">{{card.attachments}}</span></div>
-                             <div>
-          <i class="fa fa-list" style="margin-left:10px; position:absolute:margin-top:4px;"></i>
-          <span class="textcardat">Activity:</span>
-          <button class="showdetail">Show Details</button>
+       
+      </div>
+      <div class="describecard">
+        {{card.description}}
         </div>
-        
+
+      
+       <div class="desctextarea">
+          <b-textarea class="modaltextarea"></b-textarea>
+      </div>
+      <!-- card description-->
+      <div class="card_attachment">
+        <span class="descriptionicon"> <i
+            class="fas fa-paperclip"
+          ></i>
+        </span>
+        <div class="cardin_attachment">
+      Attachment:
+              </div>
+              
+              
+      </div>
+       <div class="attachedcard">
+                {{card.attachments}}
+              </div>
+     
+                   <!-- </div> -->
 
         <div class="mybtnrhs">
           <p class="btnsonright">Suggested</p>
           <br />
           <button class="btnsonright">
-            <i class="fa fa-user" style="margin-top:4px; margin-right:5px;"></i> Join
+            <i class="fa fa-user" style="margin-top:4px; margin-right:5px;"></i>
+            Join
           </button>
           <br />
           <button class="btnsonright">
@@ -65,7 +85,11 @@
           </button>
           <br />
           <button class="btnsonright">
-            <i class="fa fa-tag" aria-hidden="true" style="margin-top:4px; margin-right:5px;"></i>
+            <i
+              class="fa fa-tag"
+              aria-hidden="true"
+              style="margin-top:4px; margin-right:5px;"
+            ></i>
             Label
           </button>
           <br />
@@ -80,13 +104,21 @@
           <br />
 
           <button class="btnsonright">
-            <i class="fa fa-clock" aria-hidden="true" style="margin-top:4px; margin-right:5px;"></i>
+            <i
+              class="fa fa-clock"
+              aria-hidden="true"
+              style="margin-top:4px; margin-right:5px;"
+            ></i>
             Due Date
           </button>
           <br />
 
           <button class="btnsonright">
-            <i class="fa fa-paperclip" style="margin-top:4px; margin-right:5px;"></i>Attachments
+            <i
+              class="fa fa-paperclip"
+              style="margin-top:4px; margin-right:5px;"
+            ></i
+            >Attachments
           </button>
           <br />
 
@@ -99,13 +131,26 @@
             Cover
           </button>
           <br />
-        </div>
-                  
-      </b-modal>
+
+     
+    </div>
+         <!-- 
+           <div class="attachedcard">
+                {{card.attachments}}
+              </div>
+        <i
+            class="fa fa-list"
+            style="margin-left:10px; position:absolute:margin-top:4px;"
+          ></i>
+<span class="textcardat">Activity:</span>
+          <button class="showdetail">Show Details</button> -->
+
+    </b-modal>
     </div>
   </div>
 </template>
 <script>
+import instance from "../axios_i";
 export default {
   props: ["card"],
 
@@ -116,14 +161,33 @@ export default {
       description: null,
       attachments: null,
       modalc: false,
-      carddesc: false
+      carddesc: false,
+      carddescription: ""
     };
   },
 
   methods: {
     showcard(card_id) {
       this.modalc = true;
-      console.log(card_id, "show card has been clickwd");
+      console.log("show card has been clickwd for", card_id);
+    },
+    changedesc(desc_id) {
+      console.log("using the description control", desc_id);
+      this.carddesc = true;
+      instance
+        .patch("/cards/" + desc_id + "/", {
+          description: this.carddescription
+        })
+        .then(response => {
+          console.log(response);
+          console.log(this.carddescription);
+          // this.$emit("done")
+        })
+        .catch(function(error) {
+          console.log(error);
+
+          alert("Enter all the description details properly");
+        });
     }
   }
 };
@@ -153,43 +217,6 @@ export default {
   padding: 8px 0 0;
   font-size: 20px;
   font-family: "Roboto", sans-serif;
-
-}
-.headertext {
-  margin-left: 35px;
-  margin-top: -5px;
-    font-family: "Roboto", sans-serif;
-
-}
-.desctext {
-  background-color: rgba(45, 50, 58, 0.2);
-  width: 450px;
-  /* margin-bottom: 20px; */
-  margin: 4px 35px 0;
-  padding: 10px 10px 0;
-    font-family: "Roboto", sans-serif;
-
-}
-.descdesc {
-  margin-left: 35px;
-  padding: 8px 0 0;
-  display: flex;
-    font-family: "Roboto", sans-serif;
-
-
-}
-.attachment {
-  margin-top: 10px;
-  padding: 8px 0 0;
-    font-family: "Roboto", sans-serif;
-
-}
-.attach {
-  margin-left: 10px;
-  margin-top: -5px;
-  padding: 8px 0 0;
-    font-family: "Roboto", sans-serif;
-
 }
 .modal-body {
   background-color: rgba(244, 245, 247, 1) !important;
@@ -210,65 +237,18 @@ export default {
   margin-bottom: 5px;
 }
 .mybtnrhs {
-        display:flex;
-    flex-flow: column;
-    flex-wrap: wrap-reverse;
-    position: static;
-    margin-top: -200px;
-      font-family: "Roboto", sans-serif;
-      margin-left:560px;
-
-    
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap-reverse;
+  position: static;
+  margin-top: -150px;
+  font-family: "Roboto", sans-serif;
+  margin-left: 560px;
 }
 .btnsonright:hover {
   background-color: rgba(45, 50, 58, 0.2);
 }
-.textcardattach{
-      margin: 20px 35px 0; 
-       background-color: rgba(45, 50, 58, 0.2);
-      height:60px;
-      width:450px;
-      display: inline-block; 
-        font-family: "Roboto", sans-serif;
 
-
-
-
-}
-/* .tta{
-  /* margin: 4px 130px 0; 
-      background-color: rgba(45, 50, 58, 0.2);
-      height:60px;
-      width:360px;
-      display: inline-block;
-      /* margin-top:-860px; 
-      margin-left:200px;
-       margin-top:-790px; 
-
-} */
-.link{
-        margin: 4px 35px 0; 
-        background-color: rgba(45, 50, 58, 0.2);
-        height: 60px;
-        width:80px;
-        text-align: center;
-        /* margin-top: 20px; */
-          font-family: "Roboto", sans-serif;
-
-  
-
-}
-.textcardat {
-  /* margin-left: 12px; */
-  /* font-size: 14px; */
-    display: inline-block;
-  width: auto;
- min-height: 18px;
-  min-width: 40px;
-  font-family: "Roboto", sans-serif;
-  margin: 20px 10px 0;
-  padding: 8px 0 0;
-}
 .showdetail {
   margin-left: 280px;
   background-color: rgba(234, 236, 240, 1);
@@ -292,9 +272,10 @@ export default {
   width: 25.2px;
   border: 0px;
   margin-top: -25px;
-  margin-left: 750px;
-  padding:2px 4px  2px;
-    font-family: "Roboto", sans-serif;
+  margin-left: 650px;
+  padding: 2px 4px 2px;
+  font-family: "Roboto", sans-serif;
+  font-family:"Roboto"
 
 }
 .closemodalbtn:hover {
@@ -306,10 +287,99 @@ export default {
   margin-right: 20px;
   margin-top: -120px;
   border: 0px;
-    font-family: "Roboto", sans-serif;
+  font-family:"Roboto"
+}
+.titleicon {
+  margin-left: 15px;
+  position: absolute;
+  margin-top: 4px;
+  
+}
+.titlecard {
+  margin: 4px 50px 0;
+  padding: 0 0 0;
+  font-size:20px;
+  font-weight:800px;
+  font-family:"Roboto"
+  
+}
+.card_description {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 0 0;
+  position:relative;
 
 }
+.descriptionicon {
+  margin-left: 20px;
+  position: absolute;
+  margin-top: 4px;
+  font-family:"Roboto";
+  font-weight:400px;
 
 
+}
+.cardin_description {
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 50px;
+  font-family:"Roboto"
+
+}
+.desctextarea {
+  margin-left: 50px;
+  position: relative;
+  margin-top: 4px;
+  font-family:"Roboto"
+
+}
+.modaltextarea {
+  width: 400px;
+  background-color: rgba(45, 50, 58, 0.1);
+  height: 40px;
+  font-family:"Roboto"
+
+}
+.card_attachment {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 15px 0 0;
+  margin-top: 4px;
+  font-family:"Roboto";
+  font-size:16px;
+
+}
+.cardin_attachment {
+  font-size: 16px;
+  line-height: 20px;
+  margin-left: 50px;
+  font-family:"Roboto";
+    font-size:16px;
+
+
+}
+.attachedcard {
+  margin-left: 50px;
+  margin-top: 8px;
+  background-color: rgba(45, 50, 58, 0.1);
+  height: 40px;
+  width: 300px;
+  font-family:"Roboto";
+      font-size:14px;
+   /* height:50px;
+     width: 400px; */
+
+
+
+}
+.describecard{
+  margin:4px 50px 0;
+  padding:8px 0 0;
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 200;
+}
 </style>
 

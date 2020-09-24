@@ -10,7 +10,8 @@
           ></i>
         </div>
         <div v-for="card in list.card_details" :key="card.id">
-          <card :card="card"></card>
+          <!-- <card :card="card" v-on:done="carddescribe()"></card> -->
+           <card :card="card"></card>
         </div>
         <div class="newcard" v-show="newcard">
           <b-textarea class="newtext" placeholder="enter your card title" v-model="cardtitle"></b-textarea>
@@ -75,8 +76,20 @@ export default {
           this.cardbtns = false;
           this.newcard = false;
         });
+    },
+    // carddescribe(){
+    //    console.log("card describe function");
+    //   instance
+    //     .patch("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
+    //     // .then(response => {
+    //     //   this.lists = response.data.list_details;
+    //     // });
+    //     .then(response=>{
+    //       console.log("response from card description",response)
+    //     })
+    // }
     }
-    }
+    
 };
 </script>
 
