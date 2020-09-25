@@ -5,7 +5,7 @@
       <Between />
 
       <div class="listrender">
-        <list v-for="list in lists" :key="list.id" :list="list" v-on:ready="cardcreate()"></list>
+        <list v-for="list in lists" :key="list.id" :list="list" v-on:ready="cardcreate()" ></list>
       </div>
     </div>
   </div>

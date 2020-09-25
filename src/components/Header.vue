@@ -29,7 +29,7 @@
     </div>
     <div class="menurhs">
       <button class="mybtnrhs">
-        <i class="fas fa-plus" style="font-size:13px; color:white;position: static; margin-bottom:1px;"></i>
+        <i class="fas fa-plus" style="font-size:13px; color:white;position: static; margin-bottom:1px; "></i>
       </button>
       <button class="mybtnrhs">
         <i class="fa fa-info-circle" style="font-size:15px; color:white;position: static; margin-bottom:1px;"></i>

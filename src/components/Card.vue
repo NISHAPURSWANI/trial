@@ -15,7 +15,16 @@
         title="BootstrapVue"
         hide-footer
         hide-header
-      >
+              >
+      <!-- <div>
+         <button
+              @click="(modalc = false), (carddesc = false)"
+              class="closemodalbtn"
+            >
+              <i class="fas fa-times"></i>
+            </button> 
+      
+      </div> -->
         <div class="card_title">
         <span class="titleicon">
           <i
@@ -28,13 +37,8 @@
       {{card.title}}
         </div>
       </div>
-       <button
-              @click="(modalc = false), (carddesc = false)"
-              class="closemodalbtn"
-            >
-              <i class="fas fa-times"></i>
-            </button>
       <!--card description-->
+      
       <div class="card_description">
         <span class="descriptionicon"> <i
             class="fas fa-align-left"
@@ -45,13 +49,23 @@
         </div>
        
       </div>
-      <div class="describecard">
+      
+      <!-- <div class="describecard" v-show="des" v-on:modaldone="carddescribe()"> -->
+      <div class="describecard" v-show="des" >
+
+
         {{card.description}}
+       
         </div>
 
       
-       <div class="desctextarea">
-          <b-textarea class="modaltextarea"></b-textarea>
+       <div class="desctextarea" @click="display()" >
+          <b-textarea class="modaltextarea" v-model="carddescription" placeholder="Enter your card description"></b-textarea>
+      </div>
+      <div v-show="desb" class="desb">
+         <button @click="changedesc(card.id)" class="savebtn">Save</button>
+         <button class="closebtn" @click="desb=false,des=false">              <i class="fas fa-times"></i>
+</button>
       </div>
       <!-- card description-->
       <div class="card_attachment">
@@ -66,12 +80,26 @@
               
       </div>
        <div class="attachedcard">
-                {{card.attachments}}
+            <!-- <div class="linktext"> -->
+              Link
+            {{card.attachments}}
+
+            <!-- </div> -->
+               <!-- <span> {{card.attachments}}</span> -->
               </div>
      
                    <!-- </div> -->
 
         <div class="mybtnrhs">
+           <div>
+         <button
+              @click="(modalc = false), (carddesc = false)"
+              class="closemodalbtn"
+            >
+              <i class="fas fa-times"></i>
+            </button> 
+      
+      </div>
           <p class="btnsonright">Suggested</p>
           <br />
           <button class="btnsonright">
@@ -134,16 +162,6 @@
 
      
     </div>
-         <!-- 
-           <div class="attachedcard">
-                {{card.attachments}}
-              </div>
-        <i
-            class="fa fa-list"
-            style="margin-left:10px; position:absolute:margin-top:4px;"
-          ></i>
-<span class="textcardat">Activity:</span>
-          <button class="showdetail">Show Details</button> -->
 
     </b-modal>
     </div>
@@ -162,7 +180,9 @@ export default {
       attachments: null,
       modalc: false,
       carddesc: false,
-      carddescription: ""
+      carddescription: "",
+      des:false,
+      desb:false
     };
   },
 
@@ -177,18 +197,48 @@ export default {
       instance
         .patch("/cards/" + desc_id + "/", {
           description: this.carddescription
+          
         })
         .then(response => {
           console.log(response);
           console.log(this.carddescription);
-          // this.$emit("done")
+           this.des=true;
+           this.desb=false;
+           this.$emit("modaldone")
+
+       
         })
         .catch(function(error) {
           console.log(error);
 
           alert("Enter all the description details properly");
         });
-    }
+        this.carddescription=""
+
+        // location.reload();
+    },
+    display(){
+      this.desb=true;
+      this.des=true;
+
+    },
+    //     carddescribe(desc_id){
+    //    console.log("card describe function");
+    //   instance
+    //     // .get("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
+    //     // .then(response => {
+    //     //   this.lists = response.data.list_details;
+    //     // });
+    //      .get("/cards/"+desc_id+"/")
+    //     .then(response=>{
+    //       //  this.card = response.data.list_details.descriptio;       
+    //         //  this.card = response.data.results.description;
+
+
+    //       console.log("response from card description",response)
+    //     })
+    // }
+
   }
 };
 </script>
@@ -217,6 +267,8 @@ export default {
   padding: 8px 0 0;
   font-size: 20px;
   font-family: "Roboto", sans-serif;
+      margin-bottom:24px;
+
 }
 .modal-body {
   background-color: rgba(244, 245, 247, 1) !important;
@@ -229,21 +281,30 @@ export default {
   color: #4c5b76;
   border: 0px;
   margin-top: -20px;
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   width: 110px;
   text-align: left;
   font-size: 14px;
   border-radius: 2px;
-  margin-bottom: 5px;
+  margin-bottom: 5px; 
+      font-family: "Segoe UI";
+    /* font-style: italic; */
+    font-weight: 400;
+    src: local("Segoe UI Italic");
+
 }
 .mybtnrhs {
   display: flex;
   flex-flow: column;
   flex-wrap: wrap-reverse;
   position: static;
-  margin-top: -150px;
-  font-family: "Roboto", sans-serif;
+  margin-top: -275px;
+  /* font-family: "Roboto", sans-serif; */
   margin-left: 560px;
+  font-family: "Segoe UI";
+    /* font-style: italic; */
+    font-weight: 400;
+    src: local("Segoe UI Italic");
 }
 .btnsonright:hover {
   background-color: rgba(45, 50, 58, 0.2);
@@ -271,8 +332,10 @@ export default {
   height: 25.2px;
   width: 25.2px;
   border: 0px;
-  margin-top: -25px;
-  margin-left: 650px;
+  /* margin-top: -125px; */
+  /* margin-top:-250px; */
+  margin-top:30px;
+  /* margin-left: 650px; */
   padding: 2px 4px 2px;
   font-family: "Roboto", sans-serif;
   font-family:"Roboto"
@@ -324,14 +387,16 @@ export default {
   font-size: 16px;
   line-height: 20px;
   margin-left: 50px;
-  font-family:"Roboto"
+  font-family:"Roboto";
 
 }
 .desctextarea {
   margin-left: 50px;
   position: relative;
   margin-top: 4px;
-  font-family:"Roboto"
+  font-family:"Roboto";
+    margin-bottom:24px;
+
 
 }
 .modaltextarea {
@@ -363,9 +428,9 @@ export default {
 .attachedcard {
   margin-left: 50px;
   margin-top: 8px;
-  background-color: rgba(45, 50, 58, 0.1);
-  height: 40px;
-  width: 300px;
+  /* background-color: rgba(45, 50, 58, 0.1); */
+  height: 100px;
+  width: 400px;
   font-family:"Roboto";
       font-size:14px;
    /* height:50px;
@@ -374,12 +439,52 @@ export default {
 
 
 }
+.attachedcard:hover{
+  background-color: rgba(45, 50, 58, 0.1);
+}
 .describecard{
   margin:4px 50px 0;
   padding:8px 0 0;
   font-size: 16px;
   font-family: 'Roboto';
   font-weight: 200;
+}
+.linktext{
+  height:100px;
+  width:100px;
+  background-color: rgba(45, 50, 58, 0.1);
+  border:1px solid;
+}
+.desb{
+  margin-left:50px;
+}
+.savebtn{
+  background:#5aac44;
+  color:#fff;
+  border-radius:3px;
+  border:0px;
+  height:32px;
+  width:56px;
+}
+.savebtn:hover{
+    background-color: #5cd839;
+
+}
+.closebtn{
+  margin-left:8px;
+    border: 0px;
+  font-size: 20px;
+  border-radius: 3px;
+  /* color: rgba(0, 0, 0, 0.32); */
+  color:#172b4d;
+  height:32px;
+  width:32px;
+    background-color: rgba(234, 236, 240, 0.1);
+
+}
+.closebtn:hover{
+    color: black;
+
 }
 </style>
 

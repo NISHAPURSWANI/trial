@@ -11,7 +11,7 @@
         </div>
         <div v-for="card in list.card_details" :key="card.id">
           <!-- <card :card="card" v-on:done="carddescribe()"></card> -->
-           <card :card="card"></card>
+           <card :card="card" ></card>
         </div>
         <div class="newcard" v-show="newcard">
           <b-textarea class="newtext" placeholder="enter your card title" v-model="cardtitle"></b-textarea>
@@ -80,11 +80,15 @@ export default {
     // carddescribe(){
     //    console.log("card describe function");
     //   instance
-    //     .patch("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
+    //     .get("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
     //     // .then(response => {
     //     //   this.lists = response.data.list_details;
     //     // });
     //     .then(response=>{
+    //       //  this.card = response.data.list_details.descriptio;       
+    //          this.lists = response.data.list_details;
+
+
     //       console.log("response from card description",response)
     //     })
     // }
