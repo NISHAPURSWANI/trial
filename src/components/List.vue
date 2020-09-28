@@ -3,29 +3,40 @@
     <div class="render">
       <div class="listbox">
         <div class="title">
-          {{list.title}}
+          {{ list.title }}
           <i
             class="fas fa-ellipsis-h"
             style="display:flex; margin-left:200px; margin-top:-24px;"
           ></i>
         </div>
         <div v-for="card in list.card_details" :key="card.id">
-          <!-- <card :card="card" v-on:done="carddescribe()"></card> -->
-           <card :card="card" ></card>
+          <card :card="card" v-on:modaldone="carddescribe()"></card>
+          <!-- <card :card="card" ></card> -->
         </div>
         <div class="newcard" v-show="newcard">
-          <b-textarea class="newtext" placeholder="enter your card title" v-model="cardtitle"></b-textarea>
+          <b-textarea
+            class="newtext"
+            placeholder="enter your card title"
+            v-model="cardtitle"
+          ></b-textarea>
 
           <div></div>
           <div class="cardbtn" v-show="cardbtns">
-            <button class="addcardbtn" @click="addcard(list.id,list.card_details.length)">Add Card</button>
-            <button class="closebutton" @click="newcard=false">
+            <button
+              class="addcardbtn"
+              @click="addcard(list.id, list.card_details.length)"
+            >
+              Add Card
+            </button>
+            <button class="closebutton" @click="newcard = false">
               <i class="fas fa-times"></i>
             </button>
           </div>
         </div>
 
-        <button class="addcard" @click="newcard=true">+add another card</button>
+        <button class="addcard" @click="newcard = true">
+          +add another card
+        </button>
       </div>
     </div>
   </div>
@@ -58,16 +69,12 @@ export default {
           list: list_id,
           order: list_cardcount
         })
-         .then(response => {
+        .then(response => {
           console.log(response);
           this.cardbtns = false;
           this.newcard = false;
-          this.$emit('ready')
-          
-     
-         })
-      
-
+          this.$emit("ready");
+        })
 
         .catch(function(error) {
           console.log(error);
@@ -77,23 +84,21 @@ export default {
           this.newcard = false;
         });
     },
-    // carddescribe(){
-    //    console.log("card describe function");
-    //   instance
-    //     .get("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
-    //     // .then(response => {
-    //     //   this.lists = response.data.list_details;
-    //     // });
-    //     .then(response=>{
-    //       //  this.card = response.data.list_details.descriptio;       
-    //          this.lists = response.data.list_details;
 
+    carddescribe() {
+      console.log("card describe function 534");
+      instance
+        .get("/cards/?")
 
-    //       console.log("response from card description",response)
-    //     })
-    // }
+        .then(response => {
+          this.list.card_details = response.data.results;
+
+          console.log("hello from checker", response.data.results);
+
+          console.log("response from card description function", response);
+        });
     }
-    
+  }
 };
 </script>
 

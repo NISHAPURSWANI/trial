@@ -15,91 +15,66 @@
         title="BootstrapVue"
         hide-footer
         hide-header
-              >
-      <!-- <div>
-         <button
-              @click="(modalc = false), (carddesc = false)"
-              class="closemodalbtn"
-            >
-              <i class="fas fa-times"></i>
-            </button> 
-      
-      </div> -->
+      >
         <div class="card_title">
-        <span class="titleicon">
-          <i
-              class="fa fa-window-maximize"
-             
-            ></i>
-        </span>
-        <div class="titlecard">
-
-      {{card.title}}
+          <span class="titleicon">
+            <i class="fa fa-window-maximize"></i>
+          </span>
+          <div class="titlecard">
+            {{ card.title }}
+          </div>
         </div>
-      </div>
-      <!--card description-->
-      
-      <div class="card_description">
-        <span class="descriptionicon"> <i
-            class="fas fa-align-left"
-          ></i>
-        </span>
-        <div class="cardin_description">
-      Description:
-        </div>
-       
-      </div>
-      
-      <!-- <div class="describecard" v-show="des" v-on:modaldone="carddescribe()"> -->
-      <div class="describecard" v-show="des" >
+        <!--card description-->
 
-
-        {{card.description}}
-       
+        <div class="card_description">
+          <span class="descriptionicon">
+            <i class="fas fa-align-left"></i>
+          </span>
+          <div class="cardin_description">
+            Description:
+          </div>
         </div>
 
-      
-       <div class="desctextarea" @click="display()" >
-          <b-textarea class="modaltextarea" v-model="carddescription" placeholder="Enter your card description"></b-textarea>
-      </div>
-      <div v-show="desb" class="desb">
-         <button @click="changedesc(card.id)" class="savebtn">Save</button>
-         <button class="closebtn" @click="desb=false,des=false">              <i class="fas fa-times"></i>
-</button>
-      </div>
-      <!-- card description-->
-      <div class="card_attachment">
-        <span class="descriptionicon"> <i
-            class="fas fa-paperclip"
-          ></i>
-        </span>
-        <div class="cardin_attachment">
-      Attachment:
-              </div>
-              
-              
-      </div>
-       <div class="attachedcard">
-            <!-- <div class="linktext"> -->
-              Link
-            {{card.attachments}}
+        <div class="describecard" v-show="des">
+          {{ card.description }}
+        </div>
 
-            <!-- </div> -->
-               <!-- <span> {{card.attachments}}</span> -->
-              </div>
-     
-                   <!-- </div> -->
+        <div class="desctextarea" @click="display()">
+          <b-textarea
+            class="modaltextarea"
+            v-model="carddescription"
+            placeholder="Enter your card description"
+          ></b-textarea>
+        </div>
+        <div v-show="desb" class="desb">
+          <button @click="changedesc(card.id)" class="savebtn">Save</button>
+          <button class="closebtn" @click="(desb = false), (des = false)">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <!-- card description-->
+        <div class="card_attachment">
+          <span class="descriptionicon">
+            <i class="fas fa-paperclip"></i>
+          </span>
+          <div class="cardin_attachment">
+            Attachment:
+          </div>
+        </div>
+        <div class="attachedcard">
+          Link
+          {{ card.attachments }}
+        </div>
 
         <div class="mybtnrhs">
-           <div>
-         <button
+          <div>
+            <button
               @click="(modalc = false), (carddesc = false)"
               class="closemodalbtn"
             >
               <i class="fas fa-times"></i>
-            </button> 
-      
-      </div>
+            </button>
+          </div>
           <p class="btnsonright">Suggested</p>
           <br />
           <button class="btnsonright">
@@ -159,11 +134,8 @@
             Cover
           </button>
           <br />
-
-     
-    </div>
-
-    </b-modal>
+        </div>
+      </b-modal>
     </div>
   </div>
 </template>
@@ -171,7 +143,6 @@
 import instance from "../axios_i";
 export default {
   props: ["card"],
-
   data: function() {
     return {
       lists: [],
@@ -181,11 +152,10 @@ export default {
       modalc: false,
       carddesc: false,
       carddescription: "",
-      des:false,
-      desb:false
+      des: false,
+      desb: false
     };
   },
-
   methods: {
     showcard(card_id) {
       this.modalc = true;
@@ -197,48 +167,28 @@ export default {
       instance
         .patch("/cards/" + desc_id + "/", {
           description: this.carddescription
-          
         })
         .then(response => {
-          console.log(response);
-          console.log(this.carddescription);
-           this.des=true;
-           this.desb=false;
-           this.$emit("modaldone")
+          console.log("hello from response");
+          console.log(response.data);
+          console.log(this.carddescription, "checking calls");
+          this.$emit("modaldone");
 
-       
+          this.des = true;
+          this.desb = false;
+          //  this.$emit("modaldone")
         })
         .catch(function(error) {
           console.log(error);
-
           alert("Enter all the description details properly");
         });
-        this.carddescription=""
-
-        // location.reload();
+      this.carddescription = "";
+      // location.reload();
     },
-    display(){
-      this.desb=true;
-      this.des=true;
-
-    },
-    //     carddescribe(desc_id){
-    //    console.log("card describe function");
-    //   instance
-    //     // .get("/boards/e60d1c4b-6138-4c32-8ccd-34b1265aa0c2/")
-    //     // .then(response => {
-    //     //   this.lists = response.data.list_details;
-    //     // });
-    //      .get("/cards/"+desc_id+"/")
-    //     .then(response=>{
-    //       //  this.card = response.data.list_details.descriptio;       
-    //         //  this.card = response.data.results.description;
-
-
-    //       console.log("response from card description",response)
-    //     })
-    // }
-
+    display() {
+      this.desb = true;
+      this.des = true;
+    }
   }
 };
 </script>
@@ -267,8 +217,7 @@ export default {
   padding: 8px 0 0;
   font-size: 20px;
   font-family: "Roboto", sans-serif;
-      margin-bottom:24px;
-
+  margin-bottom: 24px;
 }
 .modal-body {
   background-color: rgba(244, 245, 247, 1) !important;
@@ -286,12 +235,11 @@ export default {
   text-align: left;
   font-size: 14px;
   border-radius: 2px;
-  margin-bottom: 5px; 
-      font-family: "Segoe UI";
-    /* font-style: italic; */
-    font-weight: 400;
-    src: local("Segoe UI Italic");
-
+  margin-bottom: 5px;
+  font-family: "Segoe UI";
+  /* font-style: italic; */
+  font-weight: 400;
+  src: local("Segoe UI Italic");
 }
 .mybtnrhs {
   display: flex;
@@ -302,14 +250,13 @@ export default {
   /* font-family: "Roboto", sans-serif; */
   margin-left: 560px;
   font-family: "Segoe UI";
-    /* font-style: italic; */
-    font-weight: 400;
-    src: local("Segoe UI Italic");
+  /* font-style: italic; */
+  font-weight: 400;
+  src: local("Segoe UI Italic");
 }
 .btnsonright:hover {
   background-color: rgba(45, 50, 58, 0.2);
 }
-
 .showdetail {
   margin-left: 280px;
   background-color: rgba(234, 236, 240, 1);
@@ -334,12 +281,11 @@ export default {
   border: 0px;
   /* margin-top: -125px; */
   /* margin-top:-250px; */
-  margin-top:30px;
+  margin-top: 30px;
   /* margin-left: 650px; */
   padding: 2px 4px 2px;
   font-family: "Roboto", sans-serif;
-  font-family:"Roboto"
-
+  font-family: "Roboto";
 }
 .closemodalbtn:hover {
   background-color: rgba(45, 50, 58, 0.2);
@@ -350,61 +296,52 @@ export default {
   margin-right: 20px;
   margin-top: -120px;
   border: 0px;
-  font-family:"Roboto"
+  font-family: "Roboto";
 }
 .titleicon {
   margin-left: 15px;
   position: absolute;
   margin-top: 4px;
-  
 }
 .titlecard {
   margin: 4px 50px 0;
   padding: 0 0 0;
-  font-size:20px;
-  font-weight:800px;
-  font-family:"Roboto"
-  
+  font-size: 20px;
+  font-weight: 800px;
+  font-family: "Roboto";
 }
 .card_description {
   display: flex;
   align-items: center;
   min-height: 32px;
   padding: 0 0 0;
-  position:relative;
-
+  position: relative;
 }
 .descriptionicon {
   margin-left: 20px;
   position: absolute;
   margin-top: 4px;
-  font-family:"Roboto";
-  font-weight:400px;
-
-
+  font-family: "Roboto";
+  font-weight: 400px;
 }
 .cardin_description {
   font-size: 16px;
   line-height: 20px;
   margin-left: 50px;
-  font-family:"Roboto";
-
+  font-family: "Roboto";
 }
 .desctextarea {
   margin-left: 50px;
   position: relative;
   margin-top: 4px;
-  font-family:"Roboto";
-    margin-bottom:24px;
-
-
+  font-family: "Roboto";
+  margin-bottom: 24px;
 }
 .modaltextarea {
   width: 400px;
   background-color: rgba(45, 50, 58, 0.1);
   height: 40px;
-  font-family:"Roboto"
-
+  font-family: "Roboto";
 }
 .card_attachment {
   display: flex;
@@ -412,18 +349,15 @@ export default {
   min-height: 32px;
   padding: 15px 0 0;
   margin-top: 4px;
-  font-family:"Roboto";
-  font-size:16px;
-
+  font-family: "Roboto";
+  font-size: 16px;
 }
 .cardin_attachment {
   font-size: 16px;
   line-height: 20px;
   margin-left: 50px;
-  font-family:"Roboto";
-    font-size:16px;
-
-
+  font-family: "Roboto";
+  font-size: 16px;
 }
 .attachedcard {
   margin-left: 50px;
@@ -431,60 +365,53 @@ export default {
   /* background-color: rgba(45, 50, 58, 0.1); */
   height: 100px;
   width: 400px;
-  font-family:"Roboto";
-      font-size:14px;
-   /* height:50px;
+  font-family: "Roboto";
+  font-size: 14px;
+  /* height:50px;
      width: 400px; */
-
-
-
 }
-.attachedcard:hover{
+.attachedcard:hover {
   background-color: rgba(45, 50, 58, 0.1);
 }
-.describecard{
-  margin:4px 50px 0;
-  padding:8px 0 0;
+.describecard {
+  margin: 4px 50px 0;
+  padding: 8px 0 0;
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 200;
 }
-.linktext{
-  height:100px;
-  width:100px;
+.linktext {
+  height: 100px;
+  width: 100px;
   background-color: rgba(45, 50, 58, 0.1);
-  border:1px solid;
+  border: 1px solid;
 }
-.desb{
-  margin-left:50px;
+.desb {
+  margin-left: 50px;
 }
-.savebtn{
-  background:#5aac44;
-  color:#fff;
-  border-radius:3px;
-  border:0px;
-  height:32px;
-  width:56px;
+.savebtn {
+  background: #5aac44;
+  color: #fff;
+  border-radius: 3px;
+  border: 0px;
+  height: 32px;
+  width: 56px;
 }
-.savebtn:hover{
-    background-color: #5cd839;
-
+.savebtn:hover {
+  background-color: #5cd839;
 }
-.closebtn{
-  margin-left:8px;
-    border: 0px;
+.closebtn {
+  margin-left: 8px;
+  border: 0px;
   font-size: 20px;
   border-radius: 3px;
   /* color: rgba(0, 0, 0, 0.32); */
-  color:#172b4d;
-  height:32px;
-  width:32px;
-    background-color: rgba(234, 236, 240, 0.1);
-
+  color: #172b4d;
+  height: 32px;
+  width: 32px;
+  background-color: rgba(234, 236, 240, 0.1);
 }
-.closebtn:hover{
-    color: black;
-
+.closebtn:hover {
+  color: black;
 }
 </style>
-
