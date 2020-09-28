@@ -1,14 +1,21 @@
 <template>
   <div>
     <b-card class="cards">
+       <!-- <draggable
+          :move="checkMove"
+          @start="dragging = true"
+          @end="dragging = false"
+        > -->
       <b-card-body
         class="cardbody"
         @click="showcard(card.id)"
         v-b-modal.modal-center
         >{{ card.title }}</b-card-body
       >
+          <!-- </draggable> -->
     </b-card>
-    <div v-if="modalc">
+
+        <div v-if="modalc">
       <b-modal
         id="modal-center"
         centered
@@ -140,9 +147,15 @@
   </div>
 </template>
 <script>
+// import draggable from "vuedraggable";
+
 import instance from "../axios_i";
 export default {
   props: ["card"],
+  // components: {
+  //   // Card,
+  //   draggable
+  // },
   data: function() {
     return {
       lists: [],

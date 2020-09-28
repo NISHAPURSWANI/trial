@@ -9,10 +9,24 @@
             style="display:flex; margin-left:200px; margin-top:-24px;"
           ></i>
         </div>
+        <!-- <draggable           @start="dragging = true,onStart(list.id)"
+        > -->
+
         <div v-for="card in list.card_details" :key="card.id">
+          <!-- <draggable
+          :move="checkMove"
+          @start="dragging = true,onStart(card.id)"
+          @end="dragging = false,onEnd()"
+        > -->
+<draggable           @start="dragging = true,onStart(card.id,card.title)"
+@end="draggable=false,onEnd(card.id,card.title)"
+        >
           <card :card="card" v-on:modaldone="carddescribe()"></card>
+          </draggable>
+
           <!-- <card :card="card" ></card> -->
         </div>
+
         <div class="newcard" v-show="newcard">
           <b-textarea
             class="newtext"
@@ -42,6 +56,7 @@
   </div>
 </template>
 <script>
+import draggable from "vuedraggable";
 import Card from "@/components/Card.vue";
 import instance from "../axios_i";
 
@@ -49,7 +64,9 @@ export default {
   props: ["list"],
   name: "List",
   components: {
-    Card
+    Card,
+   draggable
+
   },
   data: function() {
     return {
@@ -57,7 +74,10 @@ export default {
       inputfields: true,
       cardbtns: true,
       cardtitle: "",
-      order: ""
+      order: "",
+      oldIndex:'',
+      newIndex:''
+
     };
   },
   methods: {
@@ -97,6 +117,20 @@ export default {
 
           console.log("response from card description function", response);
         });
+    },
+    checkMove: function(e) {
+      window.console.log("Future index: " + e.draggedContext.futureIndex);
+    },
+    onStart(card_id){
+      // old=this.oldIndex,
+      console.log("id",card_id)
+
+
+    },
+    onEnd(card_ids){
+      // newI=this.newIndex
+      console.log("new index is",card_ids)
+     
     }
   }
 };
